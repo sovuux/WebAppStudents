@@ -1,26 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+using Students.API.Models;
 
 namespace Students.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly EntityDatabaseContext _dbContext;
+        private readonly DataContext _dbContext;
+        private readonly IConfiguration _configuration;
 
-        public StudentController(EntityDatabaseContext dbContext)   //Connect to DB
+        public StudentController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public StudentController(DataContext dbContext)   //Connect to DB
         {
             _dbContext = dbContext;
             _dbContext.Database.EnsureCreated();                     
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string? sortByOptions, bool sortAscending = true, string? sortTable = null)
+        public async Task<IActionResult> Get()
         {
-            return Ok();
+            var students = await _dbContext.Students.ToListAsync();
+            return Ok(students);
         }
     }
 }
