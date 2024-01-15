@@ -9,7 +9,7 @@ builder.Configuration.AddJsonFile("appsettings.json");
 builder.Services.AddControllers();
 
 //DataBase connection
-var connectionString = builder.Configuration.GetConnectionString("DbConnection");
+var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
 builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connectionString));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
