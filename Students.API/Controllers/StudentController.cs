@@ -34,26 +34,9 @@ namespace Students.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int Id, Student student) //Изменение студента
+        public async Task<IActionResult> Put(Student student) //Изменение студента
         {
-            var existingStudent = await _dbContext.Students.FindAsync(Id);
-            if (existingStudent == null) 
-            {
-                return NotFound();
-            }
-            existingStudent.Name = student.Name;
-            existingStudent.Surname = student.Surname;
-            existingStudent.Patron = student.Patron;
-            existingStudent.City = student.City;
-            existingStudent.PostIndex = student.PostIndex;
-            existingStudent.Street = student.Street;
-            existingStudent.Email = student.Email;
-            existingStudent.PhoneNumber = student.PhoneNumber;
-            existingStudent.Faculty = student.Faculty;
-            existingStudent.Specialty = student.Specialty;
-            existingStudent.Course = student.Course;
-            existingStudent.GroupName = student.GroupName;
-
+            _dbContext.Entry(student).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
             return Ok();
         }
