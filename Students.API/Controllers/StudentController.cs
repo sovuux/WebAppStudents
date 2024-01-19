@@ -41,7 +41,7 @@ namespace Students.API.Controllers
             return Ok();
         }
 
-        [HttpDelete ("{Id}")]
+        [HttpDelete]
         public async Task<IActionResult> Delete(int Id) //Удаление студента по Id
         {
             var student = await _dbContext.Students.FindAsync(Id);
