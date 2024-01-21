@@ -21,7 +21,7 @@ namespace Students.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get() //Вывод студентов
         {
-            var students = await _dbContext.Students.ToListAsync();
+            var students = await _dbContext.Students.OrderBy(sort => sort.Id).ToListAsync();
             return Ok(students);
         }
 
