@@ -23,7 +23,7 @@
                         <h5 class="popup-dialog-content-header-title">{{ popupEditTitle }}</h5>
                     </div>
                     <div class="popup-edit-dialog-content-body">
-                        <InputEdit ref="inputEdit"/>
+                        <InputEdit ref="inputEdit" />
                         <button class="button-confirm" @click="editStudentParent(); getStudent()">Сохранить</button>
                         <button class="button-deny" @click="closePopupEdit">Отмена</button>
                     </div>
@@ -41,7 +41,7 @@
                         </h5>
                     </div>
                     <div class="popup-delete-dialog-content-body">
-                        <button class="button-confirm" @click="confirmDeleteStudent()">Да</button>
+                        <button class="button-confirm" @click="deleteStudent()">Да</button>
                         <button class="button-deny button-deny-delete" @click="closePopupDelete">Нет</button>
                     </div>
                 </div>
@@ -106,16 +106,6 @@ export default {
     },
 
     methods: {
-        getStudent() {
-            axios.get(API_URL)
-                .then(response => {
-                    this.students = response.data
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        },
-
         closePopupAdd() {
             const store = useStore()
             store.closePopupAdd()
@@ -136,16 +126,10 @@ export default {
         },
 
         editStudentParent() {
-            this.$refs.inputEdit.editStudent() 
+            this.$refs.inputEdit.editStudent()
         },
 
         deleteStudent() {
-            const store = useStore()
-            return store.getSelectedStudent()
-            
-
-        },
-        confirmDeleteStudent() {
             const store = useStore()
             const index = store.getSelectedStudentId()
             const API_URL_DELETE = API_URL + `?Id=${index}`
@@ -154,9 +138,9 @@ export default {
                     if (index !== -1) {
                         this.students.splice(index, 1)
                     }
-                    this.showPopupDelete = false
+
+                    this.closePopupDelete()
                     location.reload()
-                    this.getStudent()
 
                 })
                 .catch(error => {

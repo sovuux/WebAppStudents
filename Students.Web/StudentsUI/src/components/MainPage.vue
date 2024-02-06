@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <h1 class="main-title">StudentUI</h1>
+        <h1 class="main-title">StudentUI(Vue 3 + postgreSQL + C#)</h1>
         <div class="container">
             <Table />
         </div>
@@ -51,7 +51,7 @@ export default {
 }
 
 .main-title {
-    margin-left: 45%;
+    margin-left: 38%;
     color: rgb(5, 129, 129);
 }
 

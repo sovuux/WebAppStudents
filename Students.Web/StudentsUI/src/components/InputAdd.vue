@@ -66,23 +66,13 @@ export default {
 
                     const store = useStore()
                     store.closePopupAdd()
+                    location.reload()
 
-                    this.getStudent()
                 })
                 .catch(error => {
                     console.log(error)
                 })
-        },
-
-        getStudent() {
-            axios.get(API_URL)
-                .then(response => {
-                    this.students = response.data
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        },
+        }
     }
 }
 </script>

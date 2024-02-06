@@ -1,11 +1,15 @@
 import { defineStore } from "pinia";
+import { API_URL } from "@/components/ApiController.vue";
 
 export const useStore = defineStore("store", {
     state: () => ({
         isPopupAddOpen: false,
         isPopupEditOpen: false,
         isPopupDeleteOpen: false,
-        selectedStudent: {}
+        selectedStudent: {},
+        students: [],
+        API_URL: API_URL
+
     }),
     actions: {
         showPopupAdd() {

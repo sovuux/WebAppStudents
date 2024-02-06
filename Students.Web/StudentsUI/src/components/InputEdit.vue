@@ -32,6 +32,7 @@ export default {
         },
     },
 
+
     methods: {
         editStudent() {
             this.showPopupEdit = true
@@ -44,30 +45,16 @@ export default {
                         this.students.splice(index, 1, updatedStudent)
                     }
 
-                    this.getStudent()
-
-                    this.closePopupEdit()
+                    const store = useStore()
+                    store.closePopupEdit()
+                    store.updateTable(API_URL)
+                    location.reload()
 
                 })
                 .catch(error => {
                     console.log(error)
                 })
-        },
-
-        getStudent() {
-            axios.get(API_URL)
-                .then(response => {
-                    this.students = response.data
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        },
-
-        closePopupEdit() {
-            const store = useStore()
-            store.closePopupEdit()
-        },
+        }
     }
 }
 </script>
