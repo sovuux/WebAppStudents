@@ -13,83 +13,67 @@
 import Popup from './Popup.vue'
 import Table from './Table.vue'
 import Button from './Button.vue'
-import { API_URL } from './ApiController.vue'
 export default {
     components: {
         Popup,
         Table,
         Button
-    },
-
-    data() {
-        return {
-            students: [],
-            showPopupAdd: false,
-            showPopupEdit: false,
-            showPopupDelete: false,
-            selectedStudent: null,
-            tempedStudent: {},
-            API_URL: API_URL
-        }
-    },
-
-    methods: {
     }
 }
 </script>
 
 <style>
-* {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+    * {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
 
-.page {
-    top: 0;
-    left: 0;
-    width: 100%;
-    position: absolute;
-}
+    .page {
+        top: 0;
+        left: 0;
+        width: 100%;
+        position: absolute;
+    }
 
-.main-title {
-    margin-left: 38%;
-    color: rgb(5, 129, 129);
-}
+    .main-title {
+        margin-left: 38%;
+        color: rgb(5, 129, 129);
+    }
 
-.container {
-    color: whitesmoke;
-    background-color: rgb(10, 139, 139);
-    width: 80%;
-    margin-left: 10%;
-}
+    .container {
+        color: whitesmoke;
+        background-color: rgb(10, 139, 139);
+        width: 80%;
+        margin-left: 10%;
+    }
 
-.data-table-column {
-    border-right: 1px solid white;
-    border-bottom: 1px solid white;
-    padding: 4px;
-}
+    .data-table-column {
+        border-right: 1px solid white;
+        border-bottom: 1px solid white;
+        padding: 4px;
+    }
 
-.button-add-container {
-    margin-top: 2%;
-    margin-left: 43%;
-}
+    .button-add-container {
+        margin-top: 2%;
+        margin-left: 43%;
+    }
 
-.button-add {
-    font-size: 25px;
-    background-color: rgb(10, 139, 139);
-    color: whitesmoke;
-    border: 1px solid black;
-    cursor: pointer;
-}
+    .button-add {
+        font-size: 25px;
+        background-color: rgb(10, 139, 139);
+        color: whitesmoke;
+        border: 1px solid black;
+        cursor: pointer;
+    }
 
-.button-add:hover {
-    background-color: rgb(17, 197, 197);
-}
+    .button-add:hover {
+        background-color: rgb(17, 197, 197);
+    }
 
-.input-title {
-    font-size: 18px;
-}
+    .input-title {
+        font-size: 18px;
+    }
 
-.popup-input {
-    font-size: 15px;
-}
+    .popup-input {
+        font-size: 15px;
+    }
 </style>

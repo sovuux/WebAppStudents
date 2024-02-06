@@ -14,65 +14,64 @@
 </template>
 
 <script>
-import { useStore } from '@/stores/store.js'
-import axios from 'axios'
-import { API_URL } from './ApiController.vue'
+    import { useStore } from '@/stores/store.js'
+    import axios from 'axios'
+    import { API_URL } from './ApiController.vue'
 
-export default {
-    data() {
-        return {
-            API_URL: API_URL,
-            students: [],
-            student: {
-                name: "",
-                surname: "",
-                patron: "",
-                city: "",
-                postIndex: "",
-                street: "",
-                phoneNumber: "",
-                faculty: "",
-                specialty: "",
-                course: "",
-                groupName: ""
-            },
-        }
-    },
-
-    methods: {
-        addStudent() {
-            const newStudent = {
-                name: this.student.name,
-                surname: this.student.surname,
-                patron: this.student.patron,
-                city: this.student.city,
-                postIndex: this.student.postIndex,
-                street: this.student.street,
-                email: this.student.email,
-                phoneNumber: this.student.phoneNumber,
-                faculty: this.student.faculty,
-                specialty: this.student.specialty,
-                course: this.student.course,
-                groupName: this.student.groupName
+    export default {
+        data() {
+            return {
+                API_URL: API_URL,
+                students: [],
+                student: {
+                    name: "",
+                    surname: "",
+                    patron: "",
+                    city: "",
+                    postIndex: "",
+                    street: "",
+                    phoneNumber: "",
+                    faculty: "",
+                    specialty: "",
+                    course: "",
+                    groupName: ""
+                },
             }
+        },
 
-            axios.post(API_URL, newStudent)
-                .then(response => {
-                    this.students.push(response.data)
+        methods: {
+            addStudent() {
+                const newStudent = {
+                    name: this.student.name,
+                    surname: this.student.surname,
+                    patron: this.student.patron,
+                    city: this.student.city,
+                    postIndex: this.student.postIndex,
+                    street: this.student.street,
+                    email: this.student.email,
+                    phoneNumber: this.student.phoneNumber,
+                    faculty: this.student.faculty,
+                    specialty: this.student.specialty,
+                    course: this.student.course,
+                    groupName: this.student.groupName
+                }
 
-                    for (var key in this.student) {
-                        this.student[key] = ""
-                    }
+                axios.post(API_URL, newStudent)
+                    .then(response => {
+                        this.students.push(response.data)
 
-                    const store = useStore()
-                    store.closePopupAdd()
-                    location.reload()
+                        for (var key in this.student) {
+                            this.student[key] = ""
+                        }
 
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+                        const store = useStore()
+                        store.closePopupAdd()
+
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
         }
     }
-}
 </script>

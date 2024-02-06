@@ -47,8 +47,6 @@ export default {
 
                     const store = useStore()
                     store.closePopupEdit()
-                    store.updateTable(API_URL)
-                    location.reload()
 
                 })
                 .catch(error => {

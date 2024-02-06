@@ -60,7 +60,7 @@
 <script>
 import { API_URL } from './ApiController.vue'
 import { useStore } from '@/stores/store.js';
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
     data() {
@@ -82,14 +82,13 @@ export default {
             }
         }
     },
-    mounted() {
-        axios.get(API_URL).then(response => {
-            this.students = response.data
-        })
 
-            .catch(error => {
-                console.log(error)
-            })
+    mounted() {
+        this.getStudent()
+        setInterval(() => {
+            this.getStudent()
+
+        }, 200)
     },
 
     methods: {
@@ -111,6 +110,16 @@ export default {
             store.showPopupDelete(true)
 
             console.log("selectedStudentId:", store.getSelectedStudentId())
+        },
+
+        getStudent() {
+            axios.get(API_URL).then(response => {
+                this.students = response.data
+            })
+
+                .catch(error => {
+                    console.log(error)
+                })
         }
     }
 }

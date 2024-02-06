@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import { useStore } from '@/stores/store.js'
-export default {
-    methods: {
-        showPopupAdd() {
-            const store = useStore()
-            store.showPopupAdd(true)
+    import { useStore } from '@/stores/store.js'
+    export default {
+        methods: {
+            showPopupAdd() {
+                const store = useStore()
+                store.showPopupAdd(true)
+            }
         }
     }
-}
 </script>
