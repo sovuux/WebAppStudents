@@ -1,3 +1,3 @@
 <script>
-    export const API_URL = "https://localhost:7167/api/Student";
+export const API_URL = "https://localhost:7167/api/Student";
 </script>
