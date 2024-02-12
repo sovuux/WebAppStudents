@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <p class="input-title">
     Имя: <input
@@ -110,17 +111,15 @@ export default {
       this.showPopupEdit = true;
       axios.put(API_URL, this.selectedStudent)
         .then(response => {
-          const updatedStudent = response.data;
+          const editStudent = response.data;
           const index = this.students.findIndex(selectedStudent => selectedStudent.id ===
-                        updatedStudent.id);
+                        editStudent.id);
           if (index !== -1) {
-            this.students.splice(index, 1, updatedStudent);
+            this.students.splice(index, 1, editStudent);
           }
 
           const store = useStore();
           store.closePopupEdit();
-          store.updateTable(API_URL);
-          location.reload();
         })
         .catch(error => {
           console.log(error);

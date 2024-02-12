@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/no-unused-components -->
+<!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <div
     class="popup-background"
@@ -126,6 +128,7 @@ export default {
   components: {
     InputAdd,
     InputEdit,
+    // eslint-disable-next-line vue/no-unused-components
     ButtonAdd
   },
 

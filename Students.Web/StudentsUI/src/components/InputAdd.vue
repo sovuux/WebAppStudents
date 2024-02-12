@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <p class="input-title">
     Имя: <input
@@ -132,13 +133,12 @@ export default {
         .then(response => {
           this.students.push(response.data);
 
-          for (let key in this.student) {
-            this.student[key] = "";
+          for (let id in this.student) {
+            this.student[id] = "";
           }
 
           const store = useStore();
           store.closePopupAdd();
-          location.reload();
         })
         .catch(error => {
           console.log(error);

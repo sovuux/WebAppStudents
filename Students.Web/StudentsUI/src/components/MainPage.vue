@@ -1,3 +1,6 @@
+<!-- eslint-disable vue/no-reserved-component-names -->
+<!-- eslint-disable vue/no-reserved-component-names -->
+<!-- eslint-disable vue/no-multiple-template-root -->
 <template>
   <div class="page">
     <h1 class="main-title">
@@ -19,7 +22,9 @@ import { API_URL } from "./ApiController.vue";
 export default {
   components: {
     Popup,
+    // eslint-disable-next-line vue/no-reserved-component-names
     Table,
+    // eslint-disable-next-line vue/no-reserved-component-names
     Button
   },
 
