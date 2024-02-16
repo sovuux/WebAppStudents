@@ -1,5 +1,8 @@
 <template>
-    <p class="input-column-name" v-for="inputEditNameColumn in inputEditNameColumns">{{ inputEditNameColumn.content }}<input type="text"></p>
+    <p class="popup-input-column-name" v-for="inputEditNameColumn in inputEditNameColumns">
+        {{ inputEditNameColumn.content }}
+        <input type="text" class="popup-input-text">
+    </p>
 </template>
 
 <script lang="ts">
@@ -7,21 +10,32 @@ export default {
     data() {
         return {
             inputEditNameColumns: [
-                { content: "Id" },
-                { content: "Имя" },
-                { content: "Фамилия" },
-                { content: "Отчество" },
-                { content: "Город" },
-                { content: "Почтовый индекс" },
-                { content: "Улица" },
-                { content: "Email" },
-                { content: "Номер телефона" },
-                { content: "Факультет" },
-                { content: "Специальность" },
-                { content: "Курс" },
-                { content: "Группа" }
+                { content: "Имя:" },
+                { content: "Фамилия:" },
+                { content: "Отчество:" },
+                { content: "Город:" },
+                { content: "Почтовый индекс:" },
+                { content: "Улица:" },
+                { content: "Email:" },
+                { content: "Номер телефона:" },
+                { content: "Факультет:" },
+                { content: "Специальность:" },
+                { content: "Курс:" },
+                { content: "Группа:" }
             ]
         }
     }
 }
 </script>
+
+<style scoped lang="scss">
+.popup-input-column-name {
+    display: grid;
+    color: rgba(107, 6, 190, 0.9)
+}
+
+.popup-input-text {
+    margin-left: 0.01%;
+    padding: 1%;
+}
+</style>
