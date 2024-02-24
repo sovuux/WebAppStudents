@@ -1,43 +1,52 @@
 <template>
     <table class="table">
         <thead>
-            <tr>
-                <th class="table-column" v-for="tableColumn in tableColumns">
-                    {{ tableColumn.content }}
-                </th>
-            </tr>
+            <th class="table-column" v-for="tableColumn in tableColumns">
+                {{ tableColumn.content }}
+            </th>
         </thead>
         <tbody>
-            <tr>
-                <th>
+            <tr v-for="tableColumn in  tableColumns" :key="tableColumn.key">
 
-                </th>
             </tr>
         </tbody>
     </table>
 </template>
 
 <script lang="ts">
+import { useStore } from '../stores/store.ts'
+
 export default {
     data() {
         return {
             tableColumns: [
-                { content: "Id" },
-                { content: "Имя" },
-                { content: "Фамилия" },
-                { content: "Отчество" },
-                { content: "Город" },
-                { content: "Почтовый индекс" },
-                { content: "Улица" },
-                { content: "Email" },
-                { content: "Номер телефона" },
-                { content: "Факультет" },
-                { content: "Специальность" },
-                { content: "Курс" },
-                { content: "Группа" },
+                { key: "id", content: "Id" },
+                { key: "name", content: "Имя" },
+                { key: "surname", content: "Фамилия" },
+                { key: "patron", content: "Отчество" },
+                { key: "city", content: "Город" },
+                { key: "postIndex", content: "Почтовый индекс" },
+                { key: "street", content: "Улица" },
+                { key: "email", content: "Email" },
+                { key: "phoneNumber", content: "Номер телефона" },
+                { key: "faculty", content: "Факультет" },
+                { key: "specialty", content: "Специальность" },
+                { key: "course", content: "Курс" },
+                { key: "group", content: "Группа" },
                 { content: "Изменить" },
                 { content: "Удалить" }
             ]
+        }
+    },
+
+    async mounted() {
+        await this.refreshTable()
+    },
+
+    methods: {
+        async refreshTable() {
+            const store = useStore()
+            await store.refreshTable()
         }
     }
 }
@@ -49,7 +58,6 @@ export default {
     margin-left: 10%;
     border: 3px solid rgba(8, 8, 185, 0.7)
 }
-
 .table-column {
     color: rgba(62, 62, 253, 0.7);
     border-left: 1px solid rgba(62, 62, 253, 0.7);

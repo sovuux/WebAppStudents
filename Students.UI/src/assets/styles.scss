@@ -1,6 +1,17 @@
 @import './variables.scss';
 
+@font-face {
+    font-family: "Roboto-regular";
+    src: url("/fonts/Roboto-Regular.ttf");
+}
+
+* {
+    font-family: "Roboto-Regular", sans-serif;
+    font-weight: 700;
+}
+
 body {
     margin: 0;  
     background-color: rgb(252, 252, 252);
 }
+

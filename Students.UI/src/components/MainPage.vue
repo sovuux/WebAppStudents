@@ -1,43 +1,43 @@
 <template>
     <div class="page">
         <h2 class="app-title">
-            {{ appTitle }}
+            StudentsUI(Vue TS + C# + PostgreSQL)
         </h2>
-        <div class="container">
-            <StudentTable />
-        </div>
-        <AddNoteButton />
+        <StudentTable />
+        <AddNoteButton @click="showPopupAdd = true" />
     </div>
-    <Popup />
+    <PopupAddNote v-if="showPopupAdd" :popupAddClose="showPopupAdd = false"></PopupAddNote>
+    <PopupEditNote v-if="showPopupEdit"></PopupEditNote>
+    <PopupDeleteNote v-if="showPopupDelete"></PopupDeleteNote>
 </template>
 
 <script lang="ts">
 import StudentTable from './StudentTable.vue';
-import AddNoteButton from './AddNoteButton.vue';
-import Popup from './Popup.vue';
+import AddNoteButton from './BaseComponents/AddNoteButton.vue';
+import PopupDeleteNote from './BaseComponents/Popups/PopupDeleteNote.vue';
+import PopupEditNote from './BaseComponents/Popups/PopupEditNote.vue';
+import PopupAddNote from './BaseComponents/Popups/PopupAddNote.vue';
 
 export default {
     components: {
         StudentTable,
         AddNoteButton,
-        Popup
+        PopupDeleteNote,
+        PopupEditNote,
+        PopupAddNote
     },
 
     data() {
         return {
-            appTitle: "StudentsUI(Vue TS + C# + PostgreSQL)"
+            showPopupAdd: false,
+            showPopupEdit: false,
+            showPopupDelete: false
         }
     }
 }
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-
-* {
-    font-family: "Roboto Condensed", sans-serif;
-}
-
 .page {
     text-align: center;
 }

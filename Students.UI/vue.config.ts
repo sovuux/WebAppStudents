@@ -1,12 +1,12 @@
 import { Configuration } from "webpack";
 
-module.exports = {
+export default{
     css: {
         loaderOptions: {
             sass: {
-                prependData:
+                additionalData:
                     ' "@/assets/styles.scss"; '
             }
         }
     }
-} as Configuration
+}
