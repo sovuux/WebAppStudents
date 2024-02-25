@@ -2,24 +2,24 @@
     <table class="table">
         <thead>
             <th class="table-column" v-for="tableColumn in tableColumns">
-                {{ tableColumn.content }}
+                <span>{{ tableColumn.content }}</span>
             </th>
         </thead>
         <tbody v-if="students">
             <tr v-for="(student, key) in students" :key="key">
-                <td class="table-column">{{ student.id }}</td>
-                <td class="table-column">{{ student.name }}</td>
-                <td class="table-column">{{ student.surname }}</td>
-                <td class="table-column">{{ student.patron }}</td>
-                <td class="table-column">{{ student.city }}</td>
-                <td class="table-column">{{ student.postIndex }}</td>
-                <td class="table-column">{{ student.street }}</td>
-                <td class="table-column">{{ student.email }}</td>
-                <td class="table-column">{{ student.phoneNumber }}</td>
-                <td class="table-column">{{ student.faculty }}</td>
-                <td class="table-column">{{ student.specialty }}</td>
-                <td class="table-column">{{ student.course }}</td>
-                <td class="table-column">{{ student.groupName }}</td>
+                <td class="table-column"><span>{{ student.id }}</span></td>
+                <td class="table-column"><span>{{ student.name }}</span></td>
+                <td class="table-column"><span>{{ student.surname }}</span></td>
+                <td class="table-column"><span>{{ student.patron }}</span></td>
+                <td class="table-column"><span>{{ student.city }}</span></td>
+                <td class="table-column"><span>{{ student.postIndex }}</span></td>
+                <td class="table-column"><span>{{ student.street }}</span></td>
+                <td class="table-column"><span>{{ student.email }}</span></td>
+                <td class="table-column"><span>{{ student.phoneNumber }}</span></td>
+                <td class="table-column"><span>{{ student.faculty }}</span></td>
+                <td class="table-column"><span>{{ student.specialty }}</span></td>
+                <td class="table-column"><span>{{ student.course }}</span></td>
+                <td class="table-column"><span>{{ student.groupName }}</span></td>
                 <td class="table-column"><button class="table-buttons" @click="openPopupEdit()"><img width="25" height="25"
                             src="../../icons8-edit-50.png" alt="edit"></button></td>
                 <td class="table-column"><button class="table-buttons" @click="openPopupDelete()"><img width="25" height="25"
