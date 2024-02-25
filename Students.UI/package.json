@@ -13,6 +13,7 @@
     "node-sass": "^9.0.0",
     "pinia": "^2.1.7",
     "sass-loader": "^14.1.0",
+    "scss": "^0.2.4",
     "vue": "^3.4.15"
   },
   "devDependencies": {

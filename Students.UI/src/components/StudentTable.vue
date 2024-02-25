@@ -5,61 +5,106 @@
                 {{ tableColumn.content }}
             </th>
         </thead>
-        <tbody>
-            <tr v-for="tableColumn in  tableColumns" :key="tableColumn.key">
-
+        <tbody v-if="students">
+            <tr v-for="(student, key) in students" :key="key">
+                <td class="table-column">{{ student.id }}</td>
+                <td class="table-column">{{ student.name }}</td>
+                <td class="table-column">{{ student.surname }}</td>
+                <td class="table-column">{{ student.patron }}</td>
+                <td class="table-column">{{ student.city }}</td>
+                <td class="table-column">{{ student.postIndex }}</td>
+                <td class="table-column">{{ student.street }}</td>
+                <td class="table-column">{{ student.email }}</td>
+                <td class="table-column">{{ student.phoneNumber }}</td>
+                <td class="table-column">{{ student.faculty }}</td>
+                <td class="table-column">{{ student.specialty }}</td>
+                <td class="table-column">{{ student.course }}</td>
+                <td class="table-column">{{ student.groupName }}</td>
+                <td class="table-column"><button class="table-buttons" @click="openPopupEdit()"><img width="25" height="25"
+                            src="../../icons8-edit-50.png" alt="edit"></button></td>
+                <td class="table-column"><button class="table-buttons" @click="openPopupDelete()"><img width="25" height="25"
+                            src="../../icons8-delete-64.png" alt="delete"></button></td>
             </tr>
         </tbody>
     </table>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { table } from 'console';
 import { useStore } from '../stores/store.ts'
+import { onMounted, ref, watch, defineEmits } from 'vue'
 
-export default {
-    data() {
-        return {
-            tableColumns: [
-                { key: "id", content: "Id" },
-                { key: "name", content: "Имя" },
-                { key: "surname", content: "Фамилия" },
-                { key: "patron", content: "Отчество" },
-                { key: "city", content: "Город" },
-                { key: "postIndex", content: "Почтовый индекс" },
-                { key: "street", content: "Улица" },
-                { key: "email", content: "Email" },
-                { key: "phoneNumber", content: "Номер телефона" },
-                { key: "faculty", content: "Факультет" },
-                { key: "specialty", content: "Специальность" },
-                { key: "course", content: "Курс" },
-                { key: "group", content: "Группа" },
-                { content: "Изменить" },
-                { content: "Удалить" }
-            ]
-        }
-    },
+const store = useStore()
 
-    async mounted() {
-        await this.refreshTable()
-    },
+const tableColumns = ref([
+    { content: "Id" },
+    { content: "Имя" },
+    { content: "Фамилия" },
+    { content: "Отчество" },
+    { content: "Город" },
+    { content: "Почтовый индекс" },
+    { content: "Улица" },
+    { content: "Email" },
+    { content: "Номер телефона" },
+    { content: "Факультет" },
+    { content: "Специальность" },
+    { content: "Курс" },
+    { content: "Группа" },
+    { content: "Изменить" },
+    { content: "Удалить" }
+])
 
-    methods: {
-        async refreshTable() {
-            const store = useStore()
-            await store.refreshTable()
-        }
-    }
+const students = ref<Object[]>([{}])
+
+const emits = defineEmits(['openPopupEdit', 'openPopupDelete'])
+const openPopupEdit = () => {
+    emits('openPopupEdit')
+}
+const openPopupDelete = () => {
+    emits('openPopupDelete')
+}
+
+watch(() => store.students, async (newValue) => {
+    students.value = newValue
+})
+
+onMounted(() => {
+    refreshTable()
+})
+
+const refreshTable = async () => {
+    store.refreshTable()
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+$table-border-color: rgba(8, 8, 185, 0.7);
+
+$table-column-color: rgba(62, 62, 253, 0.7);
+$table-column-border-color: rgba(62, 62, 253, 0.7);
+
+$table-buttons-color: rgba(126, 126, 240, 0.7);
+$table-buttons-color-hover: rgba(62, 62, 253, 0.65);
+
 .table {
     width: 80%;
     margin-left: 10%;
-    border: 3px solid rgba(8, 8, 185, 0.7)
-}
-.table-column {
-    color: rgba(62, 62, 253, 0.7);
-    border-left: 1px solid rgba(62, 62, 253, 0.7);
+    border: 3px solid $table-border-color;
+
+    &-column {
+        color: $table-column-color;
+        border-left: 1px solid $table-column-border-color;
+    }
+
+    &-buttons {
+        background-color: $table-buttons-color;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $table-buttons-color-hover;
+        }
+    }
 }
 </style>

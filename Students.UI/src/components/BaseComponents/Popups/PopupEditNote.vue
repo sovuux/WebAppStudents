@@ -1,32 +1,27 @@
 <template>
     <Popup :popup-title="popupEditTitle">
         <div class="popup-body">
-            <EditStudentForm />
+            <EditStudentInputForm />
         </div>
         <div class="popup-footer">
             <button class="button-confirm">{{ buttonEditConfirm }}</button>
-            <button class="button-deny" @click="showPopupEdit = false">{{ buttonEditDeny }}</button>
+            <button class="button-deny" @click="popupEditClose()">{{ buttonEditDeny }}</button>
         </div>
     </Popup>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { ref, defineEmits } from 'vue'
 import Popup from '../Popup.vue';
-import EditStudentForm from '../EditStudentForm.vue';
+import EditStudentInputForm from '../Inputs/EditStudentInputForm.vue';
 
-export default {
-    components: {
-        Popup,
-        EditStudentForm
-    },
+const popupEditTitle = ref('Изменить запись')
+const buttonEditConfirm = ref('Изменить')
+const buttonEditDeny = ref('Отмена')
 
-    data() {
-        return {
-            showPopupEdit: true,
-            popupEditTitle: "Изменить запись",
-            buttonEditConfirm: "Изменить",
-            buttonEditDeny: "Отмена"
-        }
-    }
+const emits = defineEmits(['popupEditClose'])
+
+const popupEditClose = () => {
+    emits('popupEditClose')
 }
 </script>

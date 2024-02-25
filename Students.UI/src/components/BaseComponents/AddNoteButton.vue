@@ -1,37 +1,35 @@
 <template>
-    <button class="button-add" @click="openPopupAdd">{{ buttonName }}</button>
+    <button class="button-add" @click="openPopupAdd()">{{ buttonName }}</button>
 </template>
 
-<script lang="ts">
-export default {
-    data() {
-        return {
-            buttonName: "Добавить"
-        }
-    },
+<script lang="ts" setup>
+import { ref, defineEmits } from 'vue'
 
-    methods: {
-        openPopupAdd() {
-            this.$emit("open-popup-add", true)
-        }
-    }
+const buttonName = ref('Добавить')
 
+const emits = defineEmits(['openPopupAdd'])
+const openPopupAdd = () => {
+    emits('openPopupAdd')
 }
 </script>
 
-<style scoped lang="scss">  .button-add {
-      margin-top: 5%;
-      font-size: 25px;
-      font-weight: 200;
-      background-color: rgba(62, 62, 253, 0.7);
-      color: whitesmoke;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      padding: 0.2%;
-  }
+<style scoped lang="scss"> $button-color: rgba(62, 62, 253, 0.7);
+ $button-color-hover: rgba(62, 62, 253, 0.65);
+ ;
 
-  .button-add:hover {
-      background-color: rgba(62, 62, 253, 0.65);
-  }
+ .button-add {
+     margin-top: 5%;
+     font-size: 25px;
+     font-weight: 200;
+     background-color: $button-color;
+     color: whitesmoke;
+     border: none;
+     border-radius: 3px;
+     cursor: pointer;
+     padding: 0.2%;
+
+     &:hover {
+         background-color: $button-color-hover;
+     }
+ }
 </style>

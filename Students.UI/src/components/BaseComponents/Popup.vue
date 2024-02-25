@@ -1,9 +1,9 @@
 <template>
-    <div class="popup-background show-popup">
+    <div class="popup-background popup-show">
         <div class="popup">
             <div class="popup-header">
                 <span class="popup-title">
-                    {{ popupTitle }}
+                    {{ props.popupTitle }}
                 </span>
             </div>
             <div class="popup-footer">
@@ -13,53 +13,61 @@
     </div>
 </template>
 
-<script lang="ts">
-export default {
-    props: {
-        popupTitle: {
-            type: String,
-            default: ""
-        }
-    }
-}
+<script lang="ts" setup>
+import { defineProps } from 'vue'
+
+const props = defineProps({
+    popupTitle: { type: String, default: "" }
+})
+
 </script>
 
-<style>
-.popup-background {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+<style lang="scss">
+$popup-title-color:rgba(62, 62, 253, 0.9);
+$button-confirm-color: rgba(62, 62, 253, 0.7);
+$button-confirm-color-hover: rgba(62, 62, 253, 0.65);
+$button-deny-color: rgba(157, 78, 221, 0.9);
+$button-deny-color-hover: rgba(157, 78, 221, 0.65);
 
-.show-popup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .popup {
+        background-color: white;
+        width: 400px;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        animation: popup-button-anim 0.3s ease-in-out;
 
-.popup-title {
-    font-size: 26px;
-    color: rgba(62, 62, 253, 0.9);
-    border-bottom: 1px solid rgba(62, 62, 253, 0.9);
-    text-align: center;
-}
+        &-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-.popup {
-    background-color: white;
-    width: 400px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    animation: popup-button-anim 0.3s ease-in-out;
-}
+        &-show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.popup-header {
-    text-align: center;
-}
+        &-title {
+            font-size: 26px;
+            color: $popup-title-color;
+            border-bottom: 1px solid $popup-title-color;
+            text-align: center;
+        }
+
+        &-header {
+            text-align: center;
+        }
+
+        &-footer {
+            margin-top: 5%;
+        }
+    }
 
 @keyframes popup-button-anim {
     0% {
@@ -73,26 +81,22 @@ export default {
     }
 }
 
-.popup-footer {
-    margin-top: 5%;
-}
-
 .button-confirm {
-    background-color: rgba(62, 62, 253, 0.7);
+    background-color: $button-confirm-color;
     color: whitesmoke;
     border: none;
     border-radius: 3px;
     font-size: 25px;
     cursor: pointer;
     font-weight: 400;
-}
 
-.button-confirm:hover {
-    background-color: rgba(62, 62, 253, 0.65);
+    &:hover {
+        background-color: $button-confirm-color-hover;
+    }
 }
 
 .button-deny {
-    background-color: rgba(157, 78, 221, 0.9);
+    background-color: $button-deny-color;
     color: whitesmoke;
     border: none;
     border-radius: 3px;
@@ -100,9 +104,9 @@ export default {
     cursor: pointer;
     margin-left: 42%;
     font-weight: 400;
-}
 
-.button-deny:hover {
-    background-color: rgba(157, 78, 221, 0.65);
+    &:hover {
+        background-color: $button-deny-color-hover;
+    }
 }
 </style>

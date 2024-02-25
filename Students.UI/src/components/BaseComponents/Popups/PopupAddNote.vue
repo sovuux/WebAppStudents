@@ -1,7 +1,7 @@
 <template>
     <Popup :popup-title="popupAddTitle">
         <div class="popup-body">
-            <AddStudentForm />
+            <AddStudentInputForm />
         </div>
         <div class="popup-footer">
             <button class="button-confirm">{{ buttonAddConfirm }}</button>
@@ -10,29 +10,18 @@
     </Popup>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { ref, defineEmits } from 'vue'
 import Popup from '../Popup.vue';
-import AddStudentForm from '../AddStudentForm.vue';
+import AddStudentInputForm from '../Inputs/AddStudentInputForm.vue';
 
-export default {
-    components: {
-        Popup,
-        AddStudentForm
-    },
+const popupAddTitle = ref("Добавить запись")
+const buttonAddConfirm = ref("Добавить")
+const buttonAddDeny = ref("Отмена")
 
-    data() {
-        return {
-            showPopupAdd: true,
-            popupAddTitle: "Добавить запись",
-            buttonAddConfirm: "Добавить",
-            buttonAddDeny: "Отмена"
-        }
-    },
+const emits = defineEmits(['popupAddClose'])
 
-    methods: {
-        popupAddClose() {
-            this.$emit('popupAddClose')
-        }
-    }
+const popupAddClose = () => {
+    emits('popupAddClose')
 }
 </script>
