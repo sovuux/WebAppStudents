@@ -13,11 +13,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import StudentTable from './StudentTable.vue';
-import AddNoteButton from './BaseComponents/AddNoteButton.vue';
-import PopupDeleteNote from './BaseComponents/Popups/PopupDeleteNote.vue';
-import PopupEditNote from './BaseComponents/Popups/PopupEditNote.vue';
-import PopupAddNote from './BaseComponents/Popups/PopupAddNote.vue';
+import StudentTable from './baseComponents/Table/StudentTable.vue';
+import AddNoteButton from './baseComponents/Button/AddNoteButton.vue';
+import PopupDeleteNote from './baseComponents/PopupDeleteNote.vue';
+import PopupEditNote from './baseComponents/PopupEditNote.vue';
+import PopupAddNote from './baseComponents/PopupAddNote.vue';
 
 const showPopupAdd = ref(false)
 const showPopupEdit = ref(false)
@@ -26,6 +26,7 @@ const showPopupDelete = ref(false)
 
 <style lang="scss">
 $main-color: rgb(62, 62, 253);
+
 $text-color: rgba(62, 62, 253, 0.7);
 
 .page {
