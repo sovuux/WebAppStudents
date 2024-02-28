@@ -1,4 +1,5 @@
 export type StudentModel = {
+    [key: string]: number | string | undefined
     id?: number
     name?: string
     surname?: string
@@ -15,6 +16,6 @@ export type StudentModel = {
 }
 
 export type ColumnModel = {
-    key?: string
+    key: keyof StudentModel
     content?: string
 }

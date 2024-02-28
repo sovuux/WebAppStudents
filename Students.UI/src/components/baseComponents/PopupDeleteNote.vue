@@ -1,30 +1,29 @@
 <template>
-    <PopupTemplate>
-        <template v-slot:popupHeader>
-            <span class="popup-title">{{ popupDeleteTitle }}</span>
+    <Popup>
+        <template #popupHeader>
+            <span class="popup-title">{{ data.popupDeleteTitle }}</span>
         </template>
-        <template v-slot:popupBody>
+        <template #popupBody>
             <div class="popup-body">
                 <span class="popup-body-text">Вы действительно хотите удалить выбранную запись?</span>
             </div>
         </template>
-        <template v-slot:popupFooter>
+        <template #popupFooter>
             <div class="popup-footer">
                 <button class="button-confirm">Удалить</button>
-                <button class="button-deny" @click="popupDeleteClose()">Отмена</button>
+                <button class="button-deny" @click="emits('popupDeleteClose')">Отмена</button>
             </div>
         </template>
-    </PopupTemplate>
+    </Popup>
 </template>
 
 <script lang="ts" setup>
-import { ref, defineEmits } from 'vue'
-import PopupTemplate from './Popup/PopupTemplate.vue';
+import { defineEmits } from 'vue'
+import Popup from './Popup/Popup.vue';
 
-const popupDeleteTitle = ref("Удалить запись")
+const data = { 
+    popupDeleteTitle:"Удалить запись"
+}
 
 const emits = defineEmits(['popupDeleteClose'])
-const popupDeleteClose = () => {
-    emits('popupDeleteClose')
-}
 </script>

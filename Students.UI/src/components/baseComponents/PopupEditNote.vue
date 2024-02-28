@@ -1,32 +1,30 @@
 <template>
-    <PopupTemplate>
-        <template v-slot:popupHeader>
-            <span class="popup-title">{{ popupEditTitle }}</span>
+    <Popup>
+        <template #popupHeader>
+            <span class="popup-title">{{ data.popupEditTitle }}</span>
         </template>
-        <template v-slot:popupBody>
+        <template #popupBody>
             <div class="popup-body">
-                <StudentInputForm />
+                <Input />
             </div>
         </template>
-        <template v-slot:popupFooter>
+        <template #popupFooter>
             <div class="popup-footer">
                 <button class="button-confirm">Изменить</button>
-                <button class="button-deny" @click="popupEditClose()">Отмена</button>
+                <button class="button-deny" @click="emits('popupEditClose')">Отмена</button>
             </div>
         </template>
-    </PopupTemplate>
+    </Popup>
 </template>
 
 <script lang="ts" setup>
-import { ref, defineEmits } from 'vue'
-import PopupTemplate from './Popup/PopupTemplate.vue';
-import StudentInputForm from './Input/StudentInputForm.vue';
+import { defineEmits } from 'vue'
+import Popup from './Popup/Popup.vue';
+import Input from './Input/Input.vue';
 
-const popupEditTitle = ref('Изменить запись')
+const data = {
+    popupEditTitle: 'Изменить запись'
+}
 
 const emits = defineEmits(['popupEditClose'])
-
-const popupEditClose = () => {
-    emits('popupEditClose')
-}
 </script>
