@@ -73,8 +73,6 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
     }
 
     &-body {
-        margin-top: 2%;
-        padding: 1%;
         text-align: center;
 
         &-text {

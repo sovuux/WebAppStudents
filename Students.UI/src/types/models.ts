@@ -1,4 +1,4 @@
-export type StudentModel = {
+export type StudentType = {
     [key: string]: number | string | undefined
     id?: number
     name?: string
@@ -15,7 +15,7 @@ export type StudentModel = {
     groupName?: string
 }
 
-export type ColumnModel = {
-    key: keyof StudentModel
+export type ColumnType = {
+    key: keyof StudentType
     content?: string
 }

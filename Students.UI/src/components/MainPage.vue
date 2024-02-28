@@ -15,9 +15,9 @@
 import { ref } from 'vue'
 import StudentTable from './baseComponents/Table/Table.vue';
 import Button from './baseComponents/Button/Button.vue';
-import PopupDeleteNote from './baseComponents/PopupDeleteNote.vue';
-import PopupEditNote from './baseComponents/PopupEditNote.vue';
-import PopupAddNote from './baseComponents/PopupAddNote.vue';
+import PopupDeleteNote from './popupDeleteNote.vue';
+import PopupEditNote from './popupEditNote.vue';
+import PopupAddNote from './popupAddNote.vue';
 
 const show = ref({
     showPopupAdd: false,

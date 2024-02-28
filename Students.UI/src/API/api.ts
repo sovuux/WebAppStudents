@@ -1,4 +1,5 @@
 import axios from "axios";
+import { StudentType } from "../types/models";
 
 const API_URL = "https://localhost:7167/api/Student"
 
@@ -13,9 +14,9 @@ const DataBaseQeuries = {
         }
     },
 
-    async postStudent() {
+    async postStudent(studentObject:StudentType) {
         try {
-            const response = await axios.post(API_URL)
+            const response = await axios.post(API_URL, studentObject)
             return response.data
         }
         catch (error) {
@@ -23,9 +24,9 @@ const DataBaseQeuries = {
         }
     },
 
-    async putStudent() {
+    async putStudent(studentObject:StudentType) {
         try {
-            const response = await axios.put(API_URL)
+            const response = await axios.put(API_URL, studentObject)
             return response.data
         }
         catch (error) {
@@ -33,15 +34,17 @@ const DataBaseQeuries = {
         }
     },
 
-    async deleteStudent() {
+    async deleteStudent(id:Number) {
         try {
-            const response = await axios.delete(API_URL + `?Id=доллар{вставить айди}`)
+            const response = await axios.delete(API_URL + `?Id=${id}`)
             return response.data
         }
         catch (error) {
             throw new Error(`${error}`)
         }
     }
-}
+} 
 
 export default DataBaseQeuries
+
+

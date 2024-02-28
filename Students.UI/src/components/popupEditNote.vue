@@ -10,7 +10,7 @@
         </template>
         <template #popupFooter>
             <div class="popup-footer">
-                <button class="button-confirm">Изменить</button>
+                <button class="button-confirm" @click="editStudent()">Изменить</button>
                 <button class="button-deny" @click="emits('popupEditClose')">Отмена</button>
             </div>
         </template>
@@ -19,12 +19,23 @@
 
 <script lang="ts" setup>
 import { defineEmits } from 'vue'
-import Popup from './Popup/Popup.vue';
-import Input from './Input/Input.vue';
+import Popup from './baseComponents/Popup/Popup.vue';
+import Input from './baseComponents/Input/Input.vue';
+import { useStore } from '../stores/store';
+
+const store = useStore()
 
 const data = {
     popupEditTitle: 'Изменить запись'
 }
 
 const emits = defineEmits(['popupEditClose'])
+
+const editStudent = async () => {
+    await store.editStudent(store.studentObject)
+    store.studentObject = {}
+    emits("popupEditClose")
+    store.refreshTable()
+    console.log("OK")
+}
 </script>

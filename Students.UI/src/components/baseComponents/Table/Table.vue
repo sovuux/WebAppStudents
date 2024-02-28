@@ -10,10 +10,10 @@
                 <td class="table-column" v-for="(tableColumn, columnIndex) in tableColumns" :key="columnIndex">
                     <span>{{ student[tableColumn.key] }}</span>
                 </td>
-                <td class="table-column"><button class="table-buttons" @click="emits('openPopupEdit')"><img width="25" height="25"
-                            src="/public/pencil.png" alt="edit"></button></td>
-                <td class="table-column"><button class="table-buttons" @click="emits('openPopupDelete')"><img width="25" height="25"
-                            src="/public/trash.png" alt="delete"></button></td>
+                <td class="table-column"><button class="table-buttons" @click="openPopupEdit(student)"><img
+                            width="25" height="25" src="/public/pencil.png" alt="edit"></button></td>
+                <td class="table-column"><button class="table-buttons" @click="openPopupDelete(student.id)"><img width="25"
+                            height="25" src="/public/trash.png" alt="delete"></button></td>
             </tr>
         </tbody>
     </table>
@@ -21,13 +21,11 @@
 
 <script lang="ts" setup>
 import { useStore } from '../../../stores/store';
-import { onMounted, ref, watch, defineEmits } from 'vue'
-import { StudentModel, ColumnModel } from '../../../types/models'
+import { onMounted, ref, watch, defineEmits } from 'vue';
+import { StudentType, ColumnType } from '../../../types/models';
 
 const store = useStore()
-
-
-const tableColumns = ref<ColumnModel[]>([
+const tableColumns = ref<ColumnType[]>([
     { key: "id", content: "Id" },
     { key: "name", content: "Имя" },
     { key: "surname", content: "Фамилия" },
@@ -43,7 +41,7 @@ const tableColumns = ref<ColumnModel[]>([
     { key: "groupName", content: "Группа" }
 ])
 
-const students = ref<StudentModel[]>([{}])
+const students = ref<StudentType[]>([{}])
 
 const emits = defineEmits(['openPopupEdit', 'openPopupDelete'])
 
@@ -54,6 +52,18 @@ watch(() => store.students, async (newValue) => {
 onMounted(async () => {
     await store.refreshTable()
 })
+
+const openPopupEdit = (student: StudentType) => {
+    store.studentObject = student
+    console.log(store.studentObject)
+    emits('openPopupEdit')
+}
+
+const openPopupDelete = (id?: number) => {
+    emits('openPopupDelete')
+    console.log(id)
+    store.studentObject.id = id
+}
 
 
 </script>
