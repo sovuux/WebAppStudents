@@ -3,8 +3,8 @@
         <h2 class="page-app-title">
             StudentsUI(Vue TS + C# + PostgreSQL)
         </h2>
-        <StudentTable @openPopupEdit="show.showPopupEdit = true" @openPopupDelete="show.showPopupDelete = true" />
-        <Button @openPopup="show.showPopupAdd = true" />
+        <studentTable @openPopupEdit="show.showPopupEdit = true" @openPopupDelete="show.showPopupDelete = true" />
+        <addButton @openPopupAdd="show.showPopupAdd = true"/>
     </div>
     <PopupAddNote v-if="show.showPopupAdd" @popupAddClose="show.showPopupAdd = false" />
     <PopupEditNote v-if="show.showPopupEdit" @popupEditClose="show.showPopupEdit = false" />
@@ -13,11 +13,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import StudentTable from './baseComponents/Table/Table.vue';
-import Button from './baseComponents/Button/Button.vue';
-import PopupDeleteNote from './popupDeleteNote.vue';
-import PopupEditNote from './popupEditNote.vue';
-import PopupAddNote from './popupAddNote.vue';
+import studentTable from './baseComponents/studentTable.vue'
+import addButton from './baseComponents/addButton.vue';
+import PopupDeleteNote from './baseComponents/popupDeleteNote.vue';
+import PopupEditNote from './baseComponents/popupEditNote.vue';
+import PopupAddNote from './baseComponents/popupAddNote.vue';
 
 const show = ref({
     showPopupAdd: false,

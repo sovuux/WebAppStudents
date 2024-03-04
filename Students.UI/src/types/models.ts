@@ -1,6 +1,5 @@
 export type StudentType = {
-    [key: string]: number | string | undefined
-    id?: number
+    id: number
     name?: string
     surname?: string
     patron?: string
@@ -16,6 +15,6 @@ export type StudentType = {
 }
 
 export type ColumnType = {
-    key: keyof StudentType
+    key: string
     content?: string
 }

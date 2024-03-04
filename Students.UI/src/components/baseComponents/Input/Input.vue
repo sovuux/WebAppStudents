@@ -3,17 +3,19 @@
         <span>
             {{ inputNameColumn.content }}
         </span>
-        <input v-model="store.studentObject[inputNameColumn.key]" type="text" class="popup-input-text">
+        <input v-model.lazy="store.studentObject[inputNameColumn.key as keyof StudentType]" type="text"
+            class="popup-input-text">
     </p>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useStore } from '../../../stores/store';
+import { ColumnType, StudentType } from '../../../types/models';
 
 const store = useStore()
 
-const inputNameColumns = ref([
+const inputNameColumns = ref<ColumnType[]>([
     { key: "name", content: "Имя" },
     { key: "surname", content: "Фамилия" },
     { key: "patron", content: "Отчество" },

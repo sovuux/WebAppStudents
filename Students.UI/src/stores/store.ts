@@ -5,8 +5,10 @@ import { StudentType } from '../types/models'
 
 export const useStore = defineStore('store', () => {
 
-    const students = ref([{}])
-    const studentObject = ref<StudentType>({})
+    const students = ref([])
+    const studentObject = ref<StudentType>({
+        id: Number(null)
+    })
 
     const refreshTable = async () => {
         students.value = await DataBaseQeuries.getStudents()
@@ -22,7 +24,7 @@ export const useStore = defineStore('store', () => {
         await refreshTable()
     }
 
-    const deleteStudent = async (id:any) => {
+    const deleteStudent = async (id: Number) => {
         await DataBaseQeuries.deleteStudent(id)
         await refreshTable()
     }

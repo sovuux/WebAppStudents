@@ -1,34 +1,31 @@
 <template>
-    <button class="button" @click="emits('openPopup')">{{ data.buttonName }}</button>
+    <button class="button" @click="emit('clickAction')">
+        <slot name="buttonContent">{{ props.buttonName }}</slot>
+    </button>
 </template>
 
 <script lang="ts" setup>
-import {  defineEmits } from 'vue'
+import { defineProps } from 'vue'
 
-const data = { 
-    buttonName: 'Добавить' 
-}
+const props = defineProps({
+    buttonName: {
+        type: String,
+        default: ""
+    }
+})
 
-const emits = defineEmits(['openPopup'])
+const emit = defineEmits(['clickAction'])
 
 </script>
 
-<style scoped lang="scss"> 
-$button-color: rgba(62, 62, 253, 0.7);
-$button-color-hover: rgba(62, 62, 253, 0.65);
+<style scoped lang="scss">
 .button {
-     margin-top: 5%;
-     font-size: 25px;
-     font-weight: 200;
-     background-color: $button-color;
-     color: whitesmoke;
-     border: none;
-     border-radius: 3px;
-     cursor: pointer;
-     padding: 0.2%;
-
-     &:hover {
-         background-color: $button-color-hover;
-     }
- }
+    font-size: 25px;
+    font-weight: 200;
+    color: whitesmoke;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+}
 </style>
