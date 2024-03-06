@@ -3,11 +3,14 @@
         <template #popupHeader>
             <span class="popup-title">{{ data.popupDeleteTitle }}</span>
         </template>
+
         <template #popupBody>
-            <div class="popup-body">
-                <span class="popup-body-text">Вы действительно хотите удалить выбранную запись?</span>
+            <div class="popup-body" style="margin-top: 5%;">
+                <span class="popup-body-text" style="font-size: 18px;">Вы действительно хотите удалить выбранную
+                    запись?</span>
             </div>
         </template>
+
         <template #popupFooter>
             <div class="popup-footer">
                 <Button class="button-confirm" @clickAction="deleteStudent()">
@@ -15,7 +18,8 @@
                         Удалить
                     </template>
                 </Button>
-                <Button class="button-deny" @clickAction="closePopupDelete()">
+                <Button class="button-deny" @clickAction="closePopupDelete()" style="margin-left: 47%;">
+
                     <template #buttonContent>
                         Отмена
                     </template>

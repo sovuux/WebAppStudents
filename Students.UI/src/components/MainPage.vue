@@ -3,27 +3,31 @@
         <h2 class="page-app-title">
             StudentsUI(Vue TS + C# + PostgreSQL)
         </h2>
-        <studentTable @openPopupEdit="show.showPopupEdit = true" @openPopupDelete="show.showPopupDelete = true" />
-        <addButton @openPopupAdd="show.showPopupAdd = true"/>
+        <StudentTable @openPopupEdit="show.showPopupAddEdit = true; isNewStudent = false"
+            @openPopupDelete="show.showPopupDelete = true">
+        </StudentTable>
+        <AddButton @openPopupAdd="show.showPopupAddEdit = true; isNewStudent = true">
+        </AddButton>
     </div>
-    <PopupAddNote v-if="show.showPopupAdd" @popupAddClose="show.showPopupAdd = false" />
-    <PopupEditNote v-if="show.showPopupEdit" @popupEditClose="show.showPopupEdit = false" />
+    <PopupAddEditNote :isNew="isNewStudent" v-if="show.showPopupAddEdit"
+        @closePopupAddEdit="show.showPopupAddEdit = false" />
     <PopupDeleteNote v-if="show.showPopupDelete" @popupDeleteClose="show.showPopupDelete = false" />
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import studentTable from './baseComponents/studentTable.vue'
-import addButton from './baseComponents/addButton.vue';
+import StudentTable from './baseComponents/studentTable.vue'
+import AddButton from './baseComponents/addButton.vue';
 import PopupDeleteNote from './baseComponents/popupDeleteNote.vue';
-import PopupEditNote from './baseComponents/popupEditNote.vue';
-import PopupAddNote from './baseComponents/popupAddNote.vue';
+import PopupAddEditNote from './baseComponents/popupAddEditNote.vue';
 
 const show = ref({
-    showPopupAdd: false,
-    showPopupEdit: false,
-    showPopupDelete: false
+    showPopupDelete: false,
+    showPopupAddEdit: false,
+    isNewStudent: false
 })
+
+const isNewStudent = ref(false)
 </script>
 
 <style lang="scss">
