@@ -9,9 +9,15 @@
         <AddButton @openPopupAdd="show.showPopupAddEdit = true; isNewStudent = true">
         </AddButton>
     </div>
-    <PopupAddEditNote :isNew="isNewStudent" v-if="show.showPopupAddEdit"
-        @closePopupAddEdit="show.showPopupAddEdit = false" />
-    <PopupDeleteNote v-if="show.showPopupDelete" @popupDeleteClose="show.showPopupDelete = false" />
+    <PopupAddEditNote 
+        :isNew="isNewStudent" 
+        v-if="show.showPopupAddEdit"
+        @closePopupAddEdit="show.showPopupAddEdit = false" 
+    />
+    <PopupDeleteNote 
+        v-if="show.showPopupDelete"
+        @popupDeleteClose="show.showPopupDelete = false" 
+    />
 </template>
 
 <script lang="ts" setup>
@@ -23,8 +29,7 @@ import PopupAddEditNote from './baseComponents/popupAddEditNote.vue';
 
 const show = ref({
     showPopupDelete: false,
-    showPopupAddEdit: false,
-    isNewStudent: false
+    showPopupAddEdit: false
 })
 
 const isNewStudent = ref(false)
