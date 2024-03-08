@@ -1,48 +1,34 @@
 <template>
-    <p class="popup-input-column-name" v-for="inputNameColumn in inputNameColumns">
-        <span>
-            {{ inputNameColumn.content }}
-        </span>
-        <input v-model.lazy="store.studentObject[inputNameColumn.key as keyof StudentType]" type="text"
-            class="popup-input-text">
+    <p class="input-container">
+        <input v-model.lazy="props.inputColumnKey<StudentType[]>" type="text" class="input-text">
     </p>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { useStore } from '../../../stores/store';
-import { ColumnType, StudentType } from '../../../types/models';
+import { defineProps } from 'vue'
+import { StudentType } from '../../../types/models';
 
-const store = useStore()
-
-const inputNameColumns = ref<ColumnType[]>([
-    { key: "name", content: "Имя" },
-    { key: "surname", content: "Фамилия" },
-    { key: "patron", content: "Отчество" },
-    { key: "city", content: "Город" },
-    { key: "postIndex", content: "Почтовый индекс" },
-    { key: "street", content: "Улица" },
-    { key: "email", content: "Email" },
-    { key: "phoneNumber", content: "Номер телефона" },
-    { key: "faculty", content: "Факультет" },
-    { key: "specialty", content: "Специальность" },
-    { key: "course", content: "Курс" },
-    { key: "groupName", content: "Группа" }
-])
+const props = defineProps({
+    inputColumnKey: {
+        type: String,
+        default: ""
+    }
+})
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 $input-text-color: rgba(107, 6, 190, 0.9);
 
-.popup-input {
-    &-column-name {
+.input {
+    &-container {
         display: grid;
+        margin: 2%;
         color: $input-text-color;
     }
 
     &-text {
         margin-left: 0.01%;
-        padding: 1%;
+        padding: 0;
         color: $input-text-color;
     }
 }
