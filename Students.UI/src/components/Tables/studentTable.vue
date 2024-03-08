@@ -36,11 +36,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from '../stores/store';
+import { useStore } from '../../stores/store';
 import { onMounted, ref, watch, defineEmits } from 'vue';
-import { StudentType, ColumnType } from '../types/models';
-import Button from './baseComponents/Button/Button.vue';
-import Table from './baseComponents/Table/Table.vue';
+import { StudentType, ColumnType } from '../../types/models';
+import Button from '../baseComponents/Button/Button.vue';
+import Table from '../baseComponents/Table/Table.vue';
 
 const store = useStore()
 const tableColumns = ref<ColumnType[]>([
@@ -82,4 +82,4 @@ const openPopupDelete = (id: number) => {
     console.log(id)
     store.studentObject.id = id
 }
-</script>
+</script>../../stores/store../../types/models

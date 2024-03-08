@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts" setup>
-import Input from './baseComponents/Input/Input.vue';
-import { ColumnType, StudentType } from '../types/models';
-import { useStore } from '../stores/store';
+import Input from '../baseComponents/Input/Input.vue';
+import { ColumnType, StudentType } from '../../types/models';
+import { useStore } from '../../stores/store';
 
 const store = useStore()
 

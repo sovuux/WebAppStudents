@@ -15,7 +15,6 @@
                 </template>
             </Button>
             <Button class="button-deny" @clickAction="closePopupAddEdit()">
-
                 <template #buttonContent>
                     Отмена
                 </template>
@@ -26,10 +25,10 @@
 
 <script lang="ts" setup>
 import { defineProps } from 'vue';
-import Popup from './baseComponents/Popup/Popup.vue';
-import StudentForm from './studentForm.vue';
-import Button from './baseComponents/Button/Button.vue';
-import { useStore } from '../stores/store';
+import Popup from '../baseComponents/Popup/Popup.vue';
+import StudentForm from '../Forms/studentForm.vue';
+import Button from '../baseComponents/Button/Button.vue';
+import { useStore } from '../../stores/store';
 
 const store = useStore()
 

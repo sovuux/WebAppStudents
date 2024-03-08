@@ -33,9 +33,9 @@
 </template>
 
 <script lang="ts" setup>
-import Popup from './baseComponents/Popup/Popup.vue';
-import Button from './baseComponents/Button/Button.vue';
-import { useStore } from '../stores/store';
+import Popup from '../baseComponents/Popup/Popup.vue';
+import Button from '../baseComponents/Button/Button.vue';
+import { useStore } from '../../stores/store';
 
 const store = useStore()
 
@@ -65,7 +65,7 @@ const closePopupDelete = () => {
         margin-left: 90%;
 
         &-image {
-            
+
             &:hover {
                 opacity: 0.75;
             }
