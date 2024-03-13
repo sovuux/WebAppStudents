@@ -18,15 +18,14 @@
                 <td class="table-column">
                     <Button class="table-buttons" @clickAction="openPopupEdit(student)">
                         <template #buttonContent>
-                            <img width="25" height="25" src="/pencil.png" alt="edit">
+                            <img class="table-buttons-icon" src="/pencil.png" alt="edit">
                         </template>
                     </Button>
                 </td>
                 <td class="table-column">
                     <Button class="table-buttons" @clickAction="openPopupDelete(student.id)">
-
                         <template #buttonContent>
-                            <img width="25" height="25" src="/trash.png" alt="delete">
+                            <img class="table-buttons-icon" src="/trash.png" alt="delete">
                         </template>
                     </Button>
                 </td>
@@ -82,4 +81,4 @@ const openPopupDelete = (id: number) => {
     console.log(id)
     store.studentObject.id = id
 }
-</script>../../stores/store../../types/models
+</script>

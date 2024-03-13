@@ -11,10 +11,14 @@
             </template>
         </Button>
     </div>
-    <PopupAddEditNote :isNew="isNewStudent" v-if="show.showPopupAddEdit"
+    <PopupAddEditNote 
+        :isNew="isNewStudent" 
+        v-if="show.showPopupAddEdit"
         @closePopupAddEdit="show.showPopupAddEdit = false">
     </PopupAddEditNote>
-    <PopupDeleteNote v-if="show.showPopupDelete" @popupDeleteClose="show.showPopupDelete = false">
+    <PopupDeleteNote 
+        v-if="show.showPopupDelete" 
+        @popupDeleteClose="show.showPopupDelete = false">
     </PopupDeleteNote>
 </template>
 
@@ -37,11 +41,12 @@ const isNewStudent = ref(false)
 
 const openPopupAddEdit = () => {
     show.value.showPopupAddEdit = true
-    if (store.studentObject.id !== null) {
-        isNewStudent.value = false
+    console.log(store.studentObject.id)
+    if (store.studentObject.id === 0) {
+        isNewStudent.value = true
     }
     else {
-        isNewStudent.value = true
+        isNewStudent.value = false
     }
 }
 </script>

@@ -1,11 +1,19 @@
 <template>
-    <Popup>
+    <Popup @click.outside="closePopupAddEdit()">
         <template #popupHeader>
             <span class="popup-title">{{ props.isNew ? 'Добавить запись' : 'Изменить запись' }}</span>
         </template>
 
         <template #popupBody>
-            <StudentForm />
+            <p class="input-container" v-for="formColumn in formColumns">
+                <span>
+                    {{ formColumn.content }}
+                </span>
+                <Input 
+                    :inputColumnKey="store.studentObject[formColumn.key as keyof StudentType]"
+                    @newStudentValue="store.studentObject[formColumn.key as keyof StudentType] = $event" 
+                />
+            </p>
         </template>
 
         <template #popupFooter>
@@ -26,11 +34,27 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import Popup from '../baseComponents/Popup/Popup.vue';
-import StudentForm from '../Forms/studentForm.vue';
+import Input from '../baseComponents/Input/Input.vue';
 import Button from '../baseComponents/Button/Button.vue';
 import { useStore } from '../../stores/store';
+import { ColumnType, StudentType } from '../../types/models';
 
 const store = useStore()
+
+const formColumns: ColumnType[] = ([
+    { key: "name", content: "Имя" },
+    { key: "surname", content: "Фамилия" },
+    { key: "patron", content: "Отчество" },
+    { key: "city", content: "Город" },
+    { key: "postIndex", content: "Почтовый индекс" },
+    { key: "street", content: "Улица" },
+    { key: "email", content: "Email" },
+    { key: "phoneNumber", content: "Номер телефона" },
+    { key: "faculty", content: "Факультет" },
+    { key: "specialty", content: "Специальность" },
+    { key: "course", content: "Курс" },
+    { key: "groupName", content: "Группа" }
+])
 
 const props = defineProps({
     isNew: {
@@ -38,6 +62,7 @@ const props = defineProps({
         default: false
     }
 })
+
 
 const emit = defineEmits(['closePopupAddEdit'])
 

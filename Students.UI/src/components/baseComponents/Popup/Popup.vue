@@ -74,10 +74,12 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
 
     &-body {
         text-align: center;
+        margin-top: 5%;
 
         &-text {
             color: $popup-title-color;
             user-select: none;
+            font-size: 18px;
         }
     }
 

@@ -1,16 +1,16 @@
 <template>
-    <Popup>
+    <Popup @click.outside="closePopupDelete()">
         <template #popupHeader>
             <Button class="button-close" @clickAction="closePopupDelete()">
                 <template #buttonContent>
                     <img src="/close.png" alt="close" class="button-close-image">
                 </template>
             </Button>
-            <span class="popup-title">{{ data.popupDeleteTitle }}</span>
+            <span class="popup-title">Удалить запись</span>
         </template>
         <template #popupBody>
-            <div class="popup-body" style="margin-top: 5%;">
-                <span class="popup-body-text" style="font-size: 18px;">Вы действительно хотите удалить выбранную
+            <div class="popup-body">
+                <span class="popup-body-text">Вы действительно хотите удалить выбранную
                     запись?</span>
             </div>
         </template>
@@ -22,7 +22,7 @@
                         Удалить
                     </template>
                 </Button>
-                <Button class="button-deny" @clickAction="closePopupDelete()" style="margin-left: 47%;">
+                <Button class="button-deny" @clickAction="closePopupDelete()">
                     <template #buttonContent>
                         Отмена
                     </template>
@@ -38,10 +38,6 @@ import Button from '../baseComponents/Button/Button.vue';
 import { useStore } from '../../stores/store';
 
 const store = useStore()
-
-const data = {
-    popupDeleteTitle: "Удалить запись"
-}
 
 const emit = defineEmits(['popupDeleteClose'])
 
@@ -70,6 +66,10 @@ const closePopupDelete = () => {
                 opacity: 0.75;
             }
         }
+    }
+
+    &-deny {
+        margin-left: 47%;
     }
 }
 </style>

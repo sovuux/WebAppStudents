@@ -37,6 +37,11 @@ $table-buttons-color-hover: rgba(62, 62, 253, 0.65);
         &:hover {
             background-color: $table-buttons-color-hover;
         }
+
+        &-icon {
+            width: 25px;
+            height: 25px;
+        }
     }
 }
 </style>
