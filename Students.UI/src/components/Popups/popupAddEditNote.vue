@@ -22,7 +22,7 @@
                             </span>
                             <Input
                                 :inputColumnKey="store.studentObject[formColumnPersonalInfo.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnPersonalInfo.key] = $event" />
+                                @newStudentValue="cloneStudent[formColumnPersonalInfo.key as keyof StudentType] = $event" />
                         </p>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                                 {{ formColumnAddress.content }}
                             </span>
                             <Input :inputColumnKey="store.studentObject[formColumnAddress.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnAddress.key] = $event" />
+                                @newStudentValue="cloneStudent[formColumnAddress.key as keyof StudentType] = $event" />
                         </p>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                 {{ formColumnContacts.content }}
                             </span>
                             <Input :inputColumnKey="store.studentObject[formColumnContacts.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnContacts.key] = $event" />
+                                @newStudentValue="cloneStudent[formColumnContacts.key as keyof StudentType] = $event" />
                         </p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                 {{ formColumnUniversity.content }}
                             </span>
                             <Input :inputColumnKey="store.studentObject[formColumnUniversity.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnUniversity.key] = $event" />
+                                @newStudentValue="cloneStudent[formColumnUniversity.key as keyof StudentType] = $event" />
                         </p>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ const props = defineProps({
 
 const emit = defineEmits(['closePopupAddEdit'])
 
-const cloneStudent = _.cloneDeep(store.studentObject)
+const cloneStudent: { [key: string]: number | string; id: number } = {} = _.cloneDeep(store.studentObject)
 
 const saveStudent = async () => {
     if (props.isNew === true) {

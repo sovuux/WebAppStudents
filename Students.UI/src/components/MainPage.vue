@@ -11,7 +11,7 @@
             </template>
         </Button>
     </div>
-    <PopupAddEditNote ref="closePopupOutsideRef" :isNew="isNewStudent" v-if="show.showPopupAddEdit"
+    <PopupAddEditNote :isNew="isNewStudent" v-if="show.showPopupAddEdit"
         @closePopupAddEdit="show.showPopupAddEdit = false">
     </PopupAddEditNote>
     <PopupDeleteNote v-if="show.showPopupDelete" @popupDeleteClose="show.showPopupDelete = false">
