@@ -26,7 +26,7 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
 
 .popup {
     background-color: white;
-    width: 400px;
+    width: 800px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -65,6 +65,14 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
         color: $popup-title-color;
         border-bottom: 1px solid $popup-title-color;
         text-align: center;
+
+        &-section {
+            font-size: 18px;
+            color: $popup-title-color;
+            border-bottom: 1px solid $popup-title-color;
+            margin: 1%;
+            user-select: none;
+        }
     }
 
     &-header {
@@ -73,18 +81,34 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
     }
 
     &-body {
-        text-align: center;
+        text-align: left;
         margin-top: 5%;
+        display: flex;
 
         &-text {
             color: $popup-title-color;
             user-select: none;
             font-size: 18px;
         }
+
+        &-container {
+            display: block;
+            width: 100%;
+
+            &-section {
+                background-color: rgb(221, 221, 221);
+                margin: 1%;
+                border-radius: 5px;
+
+                &-content {
+                    display: flex;
+                }
+            }
+        }
     }
 
     &-footer {
-        margin-top: 5%;
+        margin-top: 2%;
     }
 }
 
@@ -96,6 +120,7 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
     font-size: 25px;
     cursor: pointer;
     font-weight: 400;
+    margin-left: 30%;
 
     &:hover {
         background-color: $button-confirm-color-hover;
@@ -109,8 +134,8 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
     border-radius: 3px;
     font-size: 25px;
     cursor: pointer;
-    margin-left: 42%;
     font-weight: 400;
+    margin-left: 10%;
 
     &:hover {
         background-color: $button-deny-color-hover;

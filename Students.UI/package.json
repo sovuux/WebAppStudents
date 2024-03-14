@@ -9,14 +9,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.9.0",
     "axios": "^1.6.7",
+    "click-outside-vue3": "^4.0.1",
+    "lodash": "^4.17.21",
     "node-sass": "^9.0.0",
     "pinia": "^2.1.7",
     "sass-loader": "^14.1.0",
     "scss": "^0.2.4",
-    "vue": "^3.4.15"
+    "v3-click-outside": "^1.1.0",
+    "vue": "^3.4.15",
+    "vue-click-outside": "^1.1.0",
+    "vue-click-outside-directive": "^0.0.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.0",
     "@types/node": "^20.11.19",
     "@types/webpack": "^5.28.5",
     "@vitejs/plugin-vue": "^5.0.3",

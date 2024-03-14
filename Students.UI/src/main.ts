@@ -6,4 +6,3 @@ import './assets/styles.scss'
 const app = createApp(App)
 
 app.use(createPinia()).mount('#app')
-

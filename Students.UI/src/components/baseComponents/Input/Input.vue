@@ -37,8 +37,14 @@ $input-text-color: rgba(107, 6, 190, 0.9);
 
     &-text {
         margin-left: 0.01%;
-        padding: 0;
-        color: $input-text-color;
+        padding: 0 5px;
+        color: rgba(62, 62, 253, 0.9);
+        border: 1px solid gray;
+        font-size: 15px;
+        letter-spacing: 2px;
+        outline: none;
+        border-radius: 5px;
+        width: 150px;
     }
 }
 </style>
