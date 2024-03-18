@@ -24,7 +24,7 @@ export const useStore = defineStore('store', () => {
         await refreshTable()
     }
 
-    const deleteStudent = async (id: Number) => {
+    const deleteStudent = async (id: number) => {
         await DataBaseQeuries.deleteStudent(id)
         await refreshTable()
     }

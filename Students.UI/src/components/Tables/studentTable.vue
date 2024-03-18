@@ -1,45 +1,70 @@
 <template>
-    <Table class="table">
-        <template #tableHeader>
-            <th class="table-column" v-for="tableColumn in tableColumns">
-                <span>
-                    {{ tableColumn.content }}
-                </span>
-            </th>
-        </template>
+  <Table class="table">
+    <template #tableHeader>
+      <th
+        v-for="(tableColumn, key) in tableColumns"
+        :key="key"
+        class="table-column"
+      >
+        <span>
+          {{ tableColumn.content }}
+        </span>
+      </th>
+    </template>
 
-        <template #tableBody>
-            <tr v-for="(student, key) in students" :key="key">
-                <td class="table-column" v-for="(tableColumn, columnIndex) in tableColumns" :key="columnIndex">
-                    <span>
-                        {{ student[tableColumn.key as keyof StudentType] }}
-                    </span>
-                </td>
-                <td class="table-column">
-                    <Button class="table-buttons" @clickAction="openPopupEdit(student)">
-                        <template #buttonContent>
-                            <img class="table-buttons-icon" src="/pencil.png" alt="edit">
-                        </template>
-                    </Button>
-                </td>
-                <td class="table-column">
-                    <Button class="table-buttons" @clickAction="openPopupDelete(student.id)">
-                        <template #buttonContent>
-                            <img class="table-buttons-icon" src="/trash.png" alt="delete">
-                        </template>
-                    </Button>
-                </td>
-            </tr>
-        </template>
-    </Table>
+    <template #tableBody>
+      <tr
+        v-for="(student, key) in students"
+        :key="key"
+      >
+        <td
+          v-for="(tableColumn, columnIndex) in tableColumns"
+          :key="columnIndex"
+          class="table-column"
+        >
+          <span>
+            {{ student[tableColumn.key as keyof StudentType] }}
+          </span>
+        </td>
+        <td class="table-column">
+          <Button
+            class="table-buttons"
+            @click-action="openPopupEdit(student)"
+          >
+            <template #buttonContent>
+              <img
+                class="table-buttons-icon"
+                src="/pencil.png"
+                alt="edit"
+              >
+            </template>
+          </Button>
+        </td>
+        <td class="table-column">
+          <Button
+            class="table-buttons"
+            @click-action="openPopupDelete(student.id)"
+          >
+            <template #buttonContent>
+              <img
+                class="table-buttons-icon"
+                src="/trash.png"
+                alt="delete"
+              >
+            </template>
+          </Button>
+        </td>
+      </tr>
+    </template>
+  </Table>
 </template>
 
 <script lang="ts" setup>
 import { useStore } from '../../stores/store';
 import { onMounted, ref, watch, defineEmits } from 'vue';
 import { StudentType, ColumnType } from '../../types/models';
-import Button from '../baseComponents/Button/Button.vue';
-import Table from '../baseComponents/Table/Table.vue';
+import Button from '../baseComponents/Button/ButtonBaseComp.vue';
+import Table from '../baseComponents/Table/TableBaseComp.vue';
 
 const store = useStore()
 const tableColumns = ref<ColumnType[]>([
@@ -81,4 +106,4 @@ const openPopupDelete = (id: number) => {
     console.log(id)
     store.studentObject.id = id
 }
-</script>
+</script>../baseComponents/Table/TableBaseComp.vue

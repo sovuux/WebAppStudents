@@ -1,95 +1,131 @@
 <template>
-    <Popup>
-        <template #popupHeader>
-            <Button class="button-close" @clickAction="closePopupAddEdit()">
-                <template #buttonContent>
-                    <img src="/close.png" alt="close" class="button-close-image">
-                </template>
-            </Button>
-            <span class="popup-title">{{ props.isNew ? 'Добавить запись' : 'Изменить запись' }}</span>
+  <Popup>
+    <template #popupHeader>
+      <Button
+        class="button-close"
+        @click-action="closePopupAddEdit()"
+      >
+        <template #buttonContent>
+          <img
+            src="/close.png"
+            alt="close"
+            class="button-close-image"
+          >
         </template>
+      </Button>
+      <span class="popup-title">{{ props.isNew ? 'Добавить запись' : 'Изменить запись' }}</span>
+    </template>
 
-        <template #popupBody>
-            <div class="popup-body-container">
-                <div class="popup-body-container-section">
-                    <span class="popup-title-section">
-                        Личная информация
-                    </span>
-                    <div class="popup-body-container-section-content">
-                        <p class="input-container" v-for="formColumnPersonalInfo in formColumnsPersonalInfo">
-                            <span>
-                                {{ formColumnPersonalInfo.content }}
-                            </span>
-                            <Input
-                                :inputColumnKey="store.studentObject[formColumnPersonalInfo.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnPersonalInfo.key as keyof StudentType] = $event" />
-                        </p>
-                    </div>
-                </div>
-                <div class="popup-body-container-section">
-                    <span class="popup-title-section">
-                        Адрес
-                    </span>
-                    <div class="popup-body-container-section-content">
-                        <p class="input-container" v-for="formColumnAddress in formColumnsAddress">
-                            <span>
-                                {{ formColumnAddress.content }}
-                            </span>
-                            <Input :inputColumnKey="store.studentObject[formColumnAddress.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnAddress.key as keyof StudentType] = $event" />
-                        </p>
-                    </div>
-                </div>
-                <div class="popup-body-container-section">
-                    <span class="popup-title-section">
-                        Контакты
-                    </span>
-                    <div class="popup-body-container-section-content">
-                        <p class="input-container" v-for="formColumnContacts in formColumnsContacts">
-                            <span>
-                                {{ formColumnContacts.content }}
-                            </span>
-                            <Input :inputColumnKey="store.studentObject[formColumnContacts.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnContacts.key as keyof StudentType] = $event" />
-                        </p>
-                    </div>
-                </div>
-                <div class="popup-body-container-section">
-                    <span class="popup-title-section">
-                        Информация о институте
-                    </span>
-                    <div class="popup-body-container-section-content">
-                        <p class="input-container" v-for="formColumnUniversity in formColumnsUniversity">
-                            <span>
-                                {{ formColumnUniversity.content }}
-                            </span>
-                            <Input :inputColumnKey="store.studentObject[formColumnUniversity.key as keyof StudentType]"
-                                @newStudentValue="cloneStudent[formColumnUniversity.key as keyof StudentType] = $event" />
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </template>
+    <template #popupBody>
+      <div class="popup-body-container">
+        <div class="popup-body-container-section">
+          <span class="popup-title-section">
+            Личная информация
+          </span>
+          <div class="popup-body-container-section-content">
+            <p
+              v-for="(formColumnPersonalInfo, key) in formColumnsPersonalInfo"
+              :key="key"
+              class="input-container"
+            >
+              <span>
+                {{ formColumnPersonalInfo.content }}
+              </span>
+              <Input
+                :input-column-key="store.studentObject[formColumnPersonalInfo.key as keyof StudentType]"
+                @new-student-value="cloneStudent[formColumnPersonalInfo.key as keyof StudentType] = $event"
+              />
+            </p>
+          </div>
+        </div>
+        <div class="popup-body-container-section">
+          <span class="popup-title-section">
+            Адрес
+          </span>
+          <div class="popup-body-container-section-content">
+            <p
+              v-for="(formColumnAddress, key) in formColumnsAddress"
+              :key="key"
+              class="input-container"
+            >
+              <span>
+                {{ formColumnAddress.content }}
+              </span>
+              <Input
+                :input-column-key="store.studentObject[formColumnAddress.key as keyof StudentType]"
+                @new-student-value="cloneStudent[formColumnAddress.key as keyof StudentType] = $event"
+              />
+            </p>
+          </div>
+        </div>
+        <div class="popup-body-container-section">
+          <span class="popup-title-section">
+            Контакты
+          </span>
+          <div class="popup-body-container-section-content">
+            <p
+              v-for="(formColumnContacts, key) in formColumnsContacts" 
+              :key="key"
+              class="input-container"
+            >
+              <span>
+                {{ formColumnContacts.content }}
+              </span>
+              <Input
+                :input-column-key="store.studentObject[formColumnContacts.key as keyof StudentType]"
+                @new-student-value="cloneStudent[formColumnContacts.key as keyof StudentType] = $event"
+              />
+            </p>
+          </div>
+        </div>
+        <div class="popup-body-container-section">
+          <span class="popup-title-section">
+            Информация о институте
+          </span>
+          <div class="popup-body-container-section-content">
+            <p
+              v-for="(formColumnUniversity, key) in formColumnsUniversity"
+              :key="key"
+              class="input-container"
+            >
+              <span>
+                {{ formColumnUniversity.content }}
+              </span>
+              <Input
+                :input-column-key="store.studentObject[formColumnUniversity.key as keyof StudentType]"
+                @new-student-value="cloneStudent[formColumnUniversity.key as keyof StudentType] = $event"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
+    </template>
 
-        <template #popupFooter>
-            <Button class="button-confirm" @clickAction="saveStudent()">
-                <template #buttonContent>
-                    {{ props.isNew ? "Добавить" : "Изменить" }}
-                </template>
-            </Button>
-            <Button class="button-deny" @clickAction="closePopupAddEdit()">
-                <template #buttonContent>
-                    Отмена
-                </template>
-            </Button>
+    <template #popupFooter>
+      <Button
+        class="button-confirm"
+        @click-action="saveStudent()"
+      >
+        <template #buttonContent>
+          {{ props.isNew ? "Добавить" : "Изменить" }}
         </template>
-    </Popup>
+      </Button>
+      <Button
+        class="button-deny"
+        @click-action="closePopupAddEdit()"
+      >
+        <template #buttonContent>
+          Отмена
+        </template>
+      </Button>
+    </template>
+  </Popup>
 </template>
 
 <script lang="ts" setup>
-import Popup from '../baseComponents/Popup/Popup.vue';
-import Input from '../baseComponents/Input/Input.vue';
-import Button from '../baseComponents/Button/Button.vue';
+import Popup from '../baseComponents/Popup/PopupBaseComp.vue';
+import Input from '../baseComponents/Input/InputBaseComp.vue';
+import Button from '../baseComponents/Button/ButtonBaseComp.vue';
 import { defineProps, onMounted } from 'vue';
 import { useStore } from '../../stores/store';
 import { ColumnType, StudentType } from '../../types/models';
@@ -130,7 +166,7 @@ const props = defineProps({
 
 const emit = defineEmits(['closePopupAddEdit'])
 
-const cloneStudent: { [key: string]: number | string; id: number } = {} = _.cloneDeep(store.studentObject)
+const cloneStudent: { [key: string]: number | string; id: number } = _.cloneDeep(store.studentObject)
 
 const saveStudent = async () => {
     if (props.isNew === true) {
@@ -179,3 +215,4 @@ onMounted(() => {
     }
 }
 </style>
+../baseComponents/Button/ButtonBaseComp.vue../baseComponents/Input/InputBaseComp.vue../baseComponents/Popup/PopupBaseComp.vue

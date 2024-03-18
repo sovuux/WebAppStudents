@@ -1,18 +1,20 @@
 <template>
-    <div class="popup-background popup-show">
-        <div class="popup">
-            <div class="popup-header">
-                <slot name="popupHeader">
-                </slot>
-            </div>
-            <div class="popup-body">
-                <slot name="popupBody"></slot>
-            </div>
-            <div class="popup-footer">
-                <slot name="popupFooter" class="actions"></slot>
-            </div>
-        </div>
+  <div class="popup-background popup-show">
+    <div class="popup">
+      <div class="popup-header">
+        <slot name="popupHeader" />
+      </div>
+      <div class="popup-body">
+        <slot name="popupBody" />
+      </div>
+      <div class="popup-footer">
+        <slot
+          name="popupFooter"
+          class="actions"
+        />
+      </div>
     </div>
+  </div>
 </template>
 
 <style lang="scss">

@@ -1,28 +1,37 @@
 <template>
-    <div class="page">
-        <h2 class="page-app-title">
-            StudentsUI(Vue TS + C# + PostgreSQL)
-        </h2>
-        <StudentTable @openPopupEdit="openPopupAddEdit()" @openPopupDelete="show.showPopupDelete = true">
-        </StudentTable>
-        <Button @clickAction="openPopupAddEdit()" class="add-button">
-            <template #buttonContent>
-                Добавить
-            </template>
-        </Button>
-    </div>
-    <PopupAddEditNote :isNew="isNewStudent" v-if="show.showPopupAddEdit"
-        @closePopupAddEdit="show.showPopupAddEdit = false">
-    </PopupAddEditNote>
-    <PopupDeleteNote v-if="show.showPopupDelete" @popupDeleteClose="show.showPopupDelete = false">
-    </PopupDeleteNote>
+  <div class="page">
+    <h2 class="page-app-title">
+      StudentsUI(Vue TS + C# + PostgreSQL)
+    </h2>
+    <StudentTable
+      @open-popup-edit="openPopupAddEdit()"
+      @open-popup-delete="show.showPopupDelete = true"
+    />
+    <Button
+      class="add-button"
+      @click-action="openPopupAddEdit()"
+    >
+      <template #buttonContent>
+        Добавить
+      </template>
+    </Button>
+  </div>
+  <PopupAddEditNote
+    v-if="show.showPopupAddEdit"
+    :is-new="isNewStudent"
+    @close-popup-add-edit="show.showPopupAddEdit = false"
+  />
+  <PopupDeleteNote
+    v-if="show.showPopupDelete"
+    @popup-delete-close="show.showPopupDelete = false"
+  />
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useStore } from '../stores/store';
 import StudentTable from './Tables/studentTable.vue';
-import Button from './baseComponents/Button/Button.vue';
+import Button from './baseComponents/Button/ButtonBaseComp.vue';
 import PopupDeleteNote from './Popups/popupDeleteNote.vue';
 import PopupAddEditNote from './Popups/popupAddEditNote.vue';
 
@@ -73,4 +82,4 @@ $button-color-hover: rgba(62, 62, 253, 0.65);
         background-color: $button-color-hover;
     }
 }
-</style>
+</style>./Popups/PopupAddEditNote.vue./Popups/PopupDeleteNote.vue./Tables/StudentTable.vue

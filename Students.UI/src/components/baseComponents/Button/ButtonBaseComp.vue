@@ -1,7 +1,12 @@
 <template>
-    <button class="button" @click="emit('clickAction')">
-        <slot name="buttonContent">{{ props.buttonName }}</slot>
-    </button>
+  <button
+    class="button"
+    @click="emit('clickAction')"
+  >
+    <slot name="buttonContent">
+      {{ props.buttonName }}
+    </slot>
+  </button>
 </template>
 
 <script lang="ts" setup>

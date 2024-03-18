@@ -34,7 +34,7 @@ const DataBaseQeuries = {
         }
     },
 
-    async deleteStudent(id:Number) {
+    async deleteStudent(id:number) {
         try {
             const response = await axios.delete(API_URL + `?Id=${id}`)
             return response.data

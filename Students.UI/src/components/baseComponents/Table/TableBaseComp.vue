@@ -1,12 +1,12 @@
 <template>
-    <table>
-        <thead>
-            <slot name="tableHeader"></slot>
-        </thead>
-        <tbody>
-            <slot name="tableBody"></slot>
-        </tbody>
-    </table>
+  <table>
+    <thead>
+      <slot name="tableHeader" />
+    </thead>
+    <tbody>
+      <slot name="tableBody" />
+    </tbody>
+  </table>
 </template>
 
 <style lang="scss">
