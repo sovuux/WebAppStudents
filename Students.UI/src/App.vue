@@ -3,6 +3,5 @@
 </template>
 
 <script lang="ts" setup>
-import MainPage from './components/mainPage.vue';
+import MainPage from './components/MainPage.vue';
 </script>
-./components/MainPage.vue

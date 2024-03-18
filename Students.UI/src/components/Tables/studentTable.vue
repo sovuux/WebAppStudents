@@ -97,13 +97,11 @@ onMounted(async () => {
 
 const openPopupEdit = (student: StudentType) => {
     store.studentObject = student
-    console.log(store.studentObject)
     emits('openPopupEdit')
 }
 
 const openPopupDelete = (id: number) => {
     emits('openPopupDelete')
-    console.log(id)
     store.studentObject.id = id
 }
-</script>../baseComponents/Table/TableBaseComp.vue
+</script>

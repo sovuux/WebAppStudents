@@ -30,10 +30,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useStore } from '../stores/store';
-import StudentTable from './Tables/studentTable.vue';
+import StudentTable from './Tables/StudentTable.vue';
 import Button from './baseComponents/Button/ButtonBaseComp.vue';
-import PopupDeleteNote from './Popups/popupDeleteNote.vue';
-import PopupAddEditNote from './Popups/popupAddEditNote.vue';
+import PopupDeleteNote from './Popups/PopupDeleteNote.vue';
+import PopupAddEditNote from './Popups/PopupAddEditNote.vue';
 
 const store = useStore()
 
@@ -82,4 +82,4 @@ $button-color-hover: rgba(62, 62, 253, 0.65);
         background-color: $button-color-hover;
     }
 }
-</style>./Popups/PopupAddEditNote.vue./Popups/PopupDeleteNote.vue./Tables/StudentTable.vue
+</style>

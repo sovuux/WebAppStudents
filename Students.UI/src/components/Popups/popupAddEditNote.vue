@@ -170,17 +170,16 @@ const cloneStudent: { [key: string]: number | string; id: number } = _.cloneDeep
 
 const saveStudent = async () => {
     if (props.isNew === true) {
+        store.studentObject = cloneStudent
         await store.addStudent(store.studentObject)
         store.studentObject = { id: Number(null) }
         emit('closePopupAddEdit')
-        console.log("OK!")
     }
     else {
         store.studentObject = cloneStudent
         await store.editStudent(store.studentObject)
         store.studentObject = { id: Number(null) }
         emit('closePopupAddEdit')
-        console.log("OK")
     }
 }
 
@@ -215,4 +214,3 @@ onMounted(() => {
     }
 }
 </style>
-../baseComponents/Button/ButtonBaseComp.vue../baseComponents/Input/InputBaseComp.vue../baseComponents/Popup/PopupBaseComp.vue

@@ -62,7 +62,6 @@ const deleteStudent = async () => {
   await store.deleteStudent(store.studentObject.id)
   store.studentObject.id = 0
   emit("popupDeleteClose")
-  console.log("OK!")
 }
 
 const closePopupDelete = () => {
@@ -115,4 +114,4 @@ onMounted(() => {
     margin-left: 10%;
   }
 }
-</style>../baseComponents/Button/ButtonBaseComp.vue../baseComponents/Popup/PopupBaseComp.vue
+</style>

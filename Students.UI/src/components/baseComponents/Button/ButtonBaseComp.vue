@@ -13,10 +13,10 @@
 import { defineProps } from 'vue'
 
 const props = defineProps({
-    buttonName: {
-        type: String,
-        default: ""
-    }
+  buttonName: {
+    type: String,
+    default: ""
+  }
 })
 
 const emit = defineEmits(['clickAction'])
@@ -25,12 +25,12 @@ const emit = defineEmits(['clickAction'])
 
 <style scoped lang="scss">
 .button {
-    font-size: 25px;
-    font-weight: 200;
-    color: whitesmoke;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    user-select: none;
+  font-size: 25px;
+  font-weight: 200;
+  color: whitesmoke;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  user-select: none;
 }
 </style>
