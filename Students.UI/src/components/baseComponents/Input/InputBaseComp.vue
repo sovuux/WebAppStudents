@@ -15,7 +15,8 @@ import { defineProps, PropType, ref } from 'vue'
 const props = defineProps({
   inputColumnKey: {
     type: [String, Number] as PropType<string | number | undefined>,
-    required: true
+    required: true,
+    default: ""
   }
 })
 
