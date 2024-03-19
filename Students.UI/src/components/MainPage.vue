@@ -38,21 +38,21 @@ import PopupAddEditNote from './Popups/PopupAddEditNote.vue';
 const store = useStore()
 
 const show = ref({
-    showPopupDelete: false,
-    showPopupAddEdit: false
+  showPopupDelete: false,
+  showPopupAddEdit: false
 })
 
 const isNewStudent = ref(false)
 
 const openPopupAddEdit = () => {
-    show.value.showPopupAddEdit = true
-    console.log(store.studentObject.id)
-    if (store.studentObject.id === 0) {
-        isNewStudent.value = true
-    }
-    else {
-        isNewStudent.value = false
-    }
+  show.value.showPopupAddEdit = true
+  console.log(store.studentObject.id)
+  if (store.studentObject.id === 0) {
+    isNewStudent.value = true
+  }
+  else {
+    isNewStudent.value = false
+  }
 }
 </script>
 
@@ -65,21 +65,21 @@ $button-color: rgba(62, 62, 253, 0.7);
 $button-color-hover: rgba(62, 62, 253, 0.65);
 
 .page {
-    text-align: center;
+  text-align: center;
 
-    &-app-title {
-        border-bottom: 1px solid $main-color;
-        padding-bottom: 1%;
-        color: $text-color;
-    }
+  &-app-title {
+    border-bottom: 1px solid $main-color;
+    padding-bottom: 1%;
+    color: $text-color;
+  }
 }
 
 .add-button {
-    margin-top: 3%;
-    background-color: $button-color;
+  margin-top: 3%;
+  background-color: $button-color;
 
-    &:hover {
-        background-color: $button-color-hover;
-    }
+  &:hover {
+    background-color: $button-color-hover;
+  }
 }
 </style>
