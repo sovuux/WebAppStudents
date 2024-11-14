@@ -15,9 +15,11 @@
     "lodash": "^4.17.21",
     "node-sass": "^9.0.0",
     "pinia": "^2.1.7",
+    "primevue": "^3.52.0",
     "sass-loader": "^14.1.0",
     "scss": "^0.2.4",
-    "vue": "^3.4.15"
+    "vue": "^3.4.15",
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.0",
@@ -33,7 +35,7 @@
     "sass-loader": "^14.1.0",
     "typescript": "^5.2.2",
     "vite": "^5.1.0",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^2.1.10"
   },
   "main": ".eslintrc.js",
   "keywords": [],

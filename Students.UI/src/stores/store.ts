@@ -1,33 +1,33 @@
 import { defineStore } from 'pinia'
-import DataBaseQeuries from '../API/api'
+import DataBaseQueries from '../API/api'
 import { ref } from 'vue'
 import { StudentType } from '../types/models'
 
 export const useStore = defineStore('store', () => {
 
-    const students = ref([])
-    const studentObject = ref<StudentType>({
-        id: Number(null)
-    })
+    const students = ref<StudentType[]>([]);
+    const studentObject = ref<StudentType>({ id: 0})
 
-    const refreshTable = async () => {
-        students.value = await DataBaseQeuries.getStudents()
+    const executeAndRefresh = async (action: () => Promise<unknown>): Promise<void> => {
+        try {
+            await action();
+            students.value = await DataBaseQueries.getStudents();
+        }
+        catch (error: unknown) {
+            console.error("Ошибка при выполнении действия с таблицей", error);
+        }
     }
 
-    const addStudent = async (studentObject: StudentType) => {
-        await DataBaseQeuries.postStudent(studentObject)
-        await refreshTable()
-    }
+    const refreshTable = () => executeAndRefresh(() => Promise.resolve());
 
-    const editStudent = async (studentObject: StudentType) => {
-        await DataBaseQeuries.putStudent(studentObject)
-        await refreshTable()
-    }
+    const addStudent = (studentObject: StudentType) =>
+        executeAndRefresh(() => DataBaseQueries.postStudent(studentObject));
 
-    const deleteStudent = async (id: number) => {
-        await DataBaseQeuries.deleteStudent(id)
-        await refreshTable()
-    }
+    const editStudent = (studentObject: StudentType) =>
+        executeAndRefresh(() => DataBaseQueries.putStudent(studentObject));
+
+    const deleteStudent = (id: number) =>
+        executeAndRefresh(() => DataBaseQueries.deleteStudent(id));
 
     return {
         refreshTable,

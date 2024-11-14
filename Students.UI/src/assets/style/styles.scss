@@ -1,0 +1,19 @@
+@import "toast";
+
+@font-face {
+    font-family: "Roboto-regular";
+}
+
+* {
+    font-family: "Roboto-Regular", sans-serif;
+    font-weight: 700;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: rgb(238, 241, 248);;
+}
+

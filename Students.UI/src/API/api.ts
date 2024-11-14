@@ -1,50 +1,30 @@
 import axios from "axios";
-import { StudentType } from "../types/models";
+import { StudentType } from "../types/models.ts";
 
-const API_URL = "https://localhost:7167/api/Student"
+const API_URL = import.meta.env.VITE_API_URL;
 
-const DataBaseQeuries = {
-    async getStudents() {
-        try {
-            const response = await axios.get(API_URL)
-            return response.data
-        }
-        catch (error) {
-            throw new Error(`${error}`)
-        }
-    },
+const handleError = (error: unknown): never => {
+    throw new Error(`${error}`)
+}
 
-    async postStudent(studentObject:StudentType) {
-        try {
-            const response = await axios.post(API_URL, studentObject)
-            return response.data
-        }
-        catch (error) {
-            throw new Error(`${error}`)
-        }
-    },
-
-    async putStudent(studentObject:StudentType) {
-        try {
-            const response = await axios.put(API_URL, studentObject)
-            return response.data
-        }
-        catch (error) {
-            throw new Error(`${error}`)
-        }
-    },
-
-    async deleteStudent(id:number) {
-        try {
-            const response = await axios.delete(API_URL + `?Id=${id}`)
-            return response.data
-        }
-        catch (error) {
-            throw new Error(`${error}`)
-        }
+const request = async <T>(method: "GET" | "POST" | "PUT" | "DELETE", url: string, data: T | null = null) => {
+    try {
+        const response = await axios({ method, url, data });
+        return response.data;
     }
-} 
+    catch (error) {
+        handleError(error);
+    }
+}
 
-export default DataBaseQeuries
+const DataBaseQueries = {
+    getStudents: (): Promise<StudentType[]> => request<StudentType[]>("GET", API_URL),
 
+    postStudent: (studentObject: StudentType): Promise<StudentType> => request<StudentType>("POST", API_URL, studentObject),
 
+    putStudent: (studentObject: StudentType): Promise<StudentType> => request<StudentType>("PUT", API_URL, studentObject),
+
+    deleteStudent: (id: number): Promise<void> => request<void>("DELETE", `${API_URL}?Id=${id}`)
+}
+
+export default DataBaseQueries

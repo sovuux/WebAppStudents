@@ -10,38 +10,71 @@
 </template>
 
 <style lang="scss">
-$table-border-color: rgba(8, 8, 185, 0.7);
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
 
-$table-column-color: rgba(62, 62, 253, 0.7);
-$table-column-border-color: rgba(62, 62, 253, 0.7);
+  &-column {
+    padding: 12px 8px;
+    border-bottom: 1px solid #e0e0e0;
+  }
 
-$table-buttons-color: rgba(126, 126, 240, 0.7);
-$table-buttons-color-hover: rgba(62, 62, 253, 0.65);
+  &-header {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+}
+
+:root {
+  --button-color: #4CAF50;
+  --button-hover-color: #45a049;
+}
+
+.table-buttons {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--button-hover-color);
+  }
+
+  &-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
 
 .table {
-    width: 90%;
-    margin-left: 5%;
-    border: 3px solid $table-border-color;
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  &-column.active {
+    background-color: #e0e0e0;
+  }
+}
+
+@media (max-width: 767px) {
+  .table {
+    font-size: 12px;
 
     &-column {
-        color: $table-column-color;
-        border-left: 1px solid $table-column-border-color;
+      padding: 8px 4px;
     }
 
     &-buttons {
-        background-color: $table-buttons-color;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
+      padding: 4px 8px;
 
-        &:hover {
-            background-color: $table-buttons-color-hover;
-        }
-
-        &-icon {
-            width: 25px;
-            height: 25px;
-        }
+      &-icon {
+        width: 14px;
+        height: 14px;
+      }
     }
+  }
 }
 </style>

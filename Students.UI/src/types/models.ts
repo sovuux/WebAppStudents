@@ -18,3 +18,8 @@ export type ColumnType = {
     key: string
     content?: string
 }
+
+export type UserType = {
+    login: string,
+    password: string
+}

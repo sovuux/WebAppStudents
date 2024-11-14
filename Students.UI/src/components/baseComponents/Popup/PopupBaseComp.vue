@@ -10,7 +10,6 @@
       <div class="popup-footer">
         <slot
           name="popupFooter"
-          class="actions"
         />
       </div>
     </div>
@@ -18,17 +17,9 @@
 </template>
 
 <style lang="scss">
-$popup-title-color: rgba(62, 62, 253, 0.9);
-
-$button-confirm-color: rgba(62, 62, 253, 0.7);
-$button-confirm-color-hover: rgba(62, 62, 253, 0.65);
-
-$button-deny-color: rgba(157, 78, 221, 0.9);
-$button-deny-color-hover: rgba(157, 78, 221, 0.65);
-
 .popup {
     background-color: white;
-    width: 800px;
+    width: 1000px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -64,14 +55,14 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
 
     &-title {
         font-size: 26px;
-        color: $popup-title-color;
-        border-bottom: 1px solid $popup-title-color;
+        color: #334155;
+        border-bottom: 1px solid #64748b;
         text-align: center;
 
         &-section {
             font-size: 18px;
-            color: $popup-title-color;
-            border-bottom: 1px solid $popup-title-color;
+            color: #334155;
+            border-bottom: 1px solid #334155;
             margin: 1%;
             user-select: none;
         }
@@ -86,9 +77,10 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
         text-align: left;
         margin-top: 5%;
         display: flex;
+        justify-content: center;
 
         &-text {
-            color: $popup-title-color;
+            color: #334155;
             user-select: none;
             font-size: 18px;
         }
@@ -98,7 +90,7 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
             width: 100%;
 
             &-section {
-                background-color: rgb(221, 221, 221);
+                background-color: rgb(238, 241, 248);
                 margin: 1%;
                 border-radius: 5px;
 
@@ -110,37 +102,38 @@ $button-deny-color-hover: rgba(157, 78, 221, 0.65);
     }
 
     &-footer {
-        margin-top: 2%;
+        display: flex;
+        justify-content: center;
     }
 }
 
 .button-confirm {
-    background-color: $button-confirm-color;
+    background-color: #4CAF50;
     color: whitesmoke;
     border: none;
     border-radius: 3px;
     font-size: 25px;
     cursor: pointer;
     font-weight: 400;
-    margin-left: 30%;
-
     &:hover {
-        background-color: $button-confirm-color-hover;
+        background-color: #45a049;
     }
 }
 
 .button-deny {
-    background-color: $button-deny-color;
+    background-color: #e53935;
     color: whitesmoke;
     border: none;
     border-radius: 3px;
     font-size: 25px;
     cursor: pointer;
     font-weight: 400;
-    margin-left: 10%;
-
     &:hover {
-        background-color: $button-deny-color-hover;
+        background-color: #c62828;
     }
+}
+.input-container-span {
+  color: #334155;
+  text-decoration: underline;
 }
 </style>

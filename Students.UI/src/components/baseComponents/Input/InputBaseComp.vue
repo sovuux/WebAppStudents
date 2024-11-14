@@ -33,25 +33,22 @@ const updateSelectedStudentValue = (event: Event) => {
 </script>
 
 <style lang="scss">
-$input-text-color: rgba(107, 6, 190, 0.9);
-
 .input {
   &-container {
     display: grid;
-    margin: 2%;
-    color: $input-text-color;
+    padding: 0 1rem;
+    color: #183462;
   }
 
   &-text {
     margin-left: 0.01%;
-    padding: 0 5px;
-    color: rgba(62, 62, 253, 0.9);
+    padding: 0.3rem 0.5rem;
+    color: #183462;
     border: 1px solid gray;
     font-size: 15px;
-    letter-spacing: 2px;
     outline: none;
     border-radius: 5px;
-    width: 150px;
+    width: 100%;
   }
 }
 </style>
